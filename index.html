@@ -1,91 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Distribution Carousel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 30px;
-      background: white;
-      color: #222;
-    }
+<title>Distribution Carousel</title>
 
-    .carousel {
-      max-width: 900px;
-      margin: auto;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: white;
+}
 
-    .slide {
-      display: none;
-      text-align: center;
-    }
+.carousel {
+  max-width: 900px;
+  margin: auto;
+}
 
-    .slide.active {
-      display: block;
-    }
+.slide {
+  display: none;
+  text-align: center;
+}
 
-    .slide h2 {
-      color: #00583d;
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
+.slide.active {
+  display: block;
+}
 
-    .image-placeholder {
-      background: #f3f3f3;
-      padding: 60px 20px;
-      margin: 20px auto;
-      max-width: 500px;
-      color: #666;
-    }
+h2 {
+  color: #00583d;
+  font-size: 28px;
+}
 
-    .text {
-      border: 3px solid #a8d49f;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 600px;
-      font-size: 18px;
-      line-height: 1.5;
-    }
+.image-placeholder {
+  background: #f2f2f2;
+  padding: 50px 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  color: #666;
+}
 
-    .navigation {
-      text-align: center;
-      margin-top: 25px;
-    }
+.text {
+  border: 3px solid #a8d49f;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.5;
+}
 
-    button {
-      background: #f47721;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      margin: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
 
-    button:hover {
-      background: #d95f0e;
-    }
-  </style>
+button {
+  background: #f47721;
+  color: white;
+  border: 0;
+  padding: 12px 22px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.counter {
+  text-align: center;
+  color: #666;
+  margin-top: 10px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="carousel">
+<div class="carousel">
 
-    <div class="slide active">
-      <h2>Selective Distribution</h2>
+  <div class="slide active">
+    <h2>Selective Distribution</h2>
 
-      <div class="image-placeholder">
-        IMAGE 1 GOES HERE
-      </div>
-
-      <div class="text">
-        Selective distribution uses carefully selected channels to reach customers.
-      </div>
+    <div class="image-placeholder">
+      IMAGE 1 GOES HERE
     </div>
 
-    <div
+    <div class="text">
+      Selective distribution uses carefully selected channels to reach customers.
+    </div>
+  </div>
+
+
+  <div class="slide">
+    <h2>Exclusive Distribution</h2>
+
+    <div class="image-placeholder">
+      IMAGE 2 GOES HERE
+    </div>
+
+    <div class="text">
+      Exclusive distribution uses a limited and carefully chosen distribution network.
+    </div>
+  </div>
+
+
+  <div class="navigation">
+    <button type="button" onclick="changeSlide(-1)">
+      ← Previous
+    </button>
+
+    <button type="button" onclick="changeSlide(1)">
+      Next →
+    </button>
+  </div>
+
+  <div class="counter" id="counter">
+    1 of 2
+  </div>
+
+</div>
+
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+const counter = document.getElementById("counter");
+
+function changeSlide(direction) {
+
+  slides[currentSlide].classList.remove("active");
+
+  currentSlide =
+    (currentSlide + direction + slides.length) % slides.length;
+
+  slides[currentSlide].classList.add("active");
+
+  counter.textContent =
+    (currentSlide + 1) + " of " + slides.length;
+}
+</script>
+
+</body>
+</html>
