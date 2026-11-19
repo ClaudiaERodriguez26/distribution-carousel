@@ -4,72 +4,121 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Distribution Carousel</title>
+<title>Customer Value Carousel</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background: white;
+  background: #ffffff;
+  color: #12201d;
 }
 
 .carousel {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
+  border-top: 5px solid #f47721;
+  border-bottom: 5px solid #f47721;
+  padding: 25px 15px 20px;
 }
 
 .slide {
   display: none;
-  text-align: center;
 }
 
 .slide.active {
   display: block;
 }
 
-h2 {
-  color: #00583d;
-  font-size: 28px;
+.slide-content {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
 }
 
-.image-placeholder {
-  background: #f2f2f2;
-  padding: 50px 20px;
-  margin: 20px auto;
-  max-width: 500px;
-  color: #666;
+.image-area {
+  flex: 1 1 45%;
 }
 
-.text {
+.image-area img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+}
+
+.text-area {
+  flex: 1 1 55%;
   border: 3px solid #a8d49f;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 600px;
-  font-size: 18px;
-  line-height: 1.5;
+  border-radius: 4px;
+  padding: 15px;
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+.text-area p {
+  margin: 0;
 }
 
 .navigation {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 20px 0;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  min-height: 55px;
 }
 
 button {
   background: #f47721;
-  color: white;
+  color: #ffffff;
   border: 0;
-  padding: 12px 22px;
-  font-size: 16px;
+  padding: 13px 24px;
+  font-size: 18px;
   cursor: pointer;
 }
 
+button:hover {
+  background: #db6113;
+}
+
+button:focus {
+  outline: 3px solid #00583d;
+  outline-offset: 3px;
+}
+
+button.hidden {
+  visibility: hidden;
+}
+
 .counter {
-  text-align: center;
-  color: #666;
-  margin-top: 10px;
+  color: #00583d;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 700px) {
+  .slide-content {
+    flex-direction: column;
+  }
+
+  .image-area,
+  .text-area {
+    width: 100%;
+  }
+
+  .text-area {
+    font-size: 17px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 11px 16px;
+  }
 }
 </style>
 </head>
@@ -78,44 +127,180 @@ button {
 
 <div class="carousel">
 
+  <!-- SLIDE 1 -->
   <div class="slide active">
-    <h2>Selective Distribution</h2>
+    <div class="slide-content">
 
-    <div class="image-placeholder">
-      IMAGE 1 GOES HERE
-    </div>
+      <div class="image-area">
+        <img src="customer-value.jpg" alt="Customer value visualization">
+      </div>
 
-    <div class="text">
-      Selective distribution uses carefully selected channels to reach customers.
+      <div class="text-area">
+        <p>
+          <strong>Customer Segmentation:</strong>
+          Customers are segmented into categories based on their worth to the company.
+          This can be determined by current sales volume, profitability, potential for
+          growth, strategic importance, or a combination of these and other factors.
+        </p>
+      </div>
+
     </div>
   </div>
 
 
+  <!-- SLIDE 2 -->
   <div class="slide">
-    <h2>Exclusive Distribution</h2>
+    <div class="slide-content">
 
-    <div class="image-placeholder">
-      IMAGE 2 GOES HERE
-    </div>
+      <div class="image-area">
+        <img src="customer-value.jpg" alt="Customer value visualization">
+      </div>
 
-    <div class="text">
-      Exclusive distribution uses a limited and carefully chosen distribution network.
+      <div class="text-area">
+        <p>
+          <strong>Value Assessment:</strong>
+          The value of a customer may include their direct monetary value
+          (how much revenue they bring in), their lifetime value
+          (the net profit attributed to the entire future relationship with the customer),
+          and less tangible factors like referral potential or strategic position
+          in the market.
+        </p>
+      </div>
+
     </div>
   </div>
 
 
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <div class="slide-content">
+
+      <div class="image-area">
+        <img src="customer-value.jpg" alt="Customer value visualization">
+      </div>
+
+      <div class="text-area">
+        <p>
+          <strong>Resource Allocation:</strong>
+          Sales efforts are then allocated according to these segments.
+          High-value customers receive more attention; e.g., more frequent visits,
+          faster service, or access to better deals and offers.
+          This ensures that the sales force's time and the company's resources are
+          invested where they're likely to yield the highest return.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <div class="slide-content">
+
+      <div class="image-area">
+        <img src="customer-value.jpg" alt="Customer value visualization">
+      </div>
+
+      <div class="text-area">
+        <p>
+          <strong>Tailored Sales Strategies:</strong>
+          Different strategies may be developed for different customer segments.
+          For high-worth customers, a company might employ a more consultative selling
+          approach, while for lower-worth customers, the approach might be more transactional.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <div class="slide-content">
+
+      <div class="image-area">
+        <img src="customer-value.jpg" alt="Customer value visualization">
+      </div>
+
+      <div class="text-area">
+        <p>
+          <strong>Efficiency and Effectiveness:</strong>
+          Focusing sales efforts on customer worth ensures that sales activities
+          are both efficient (minimal waste of resources) and effective
+          (maximizing sales results).
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- SLIDE 6 -->
+  <div class="slide">
+    <div class="slide-content">
+
+      <div class="image-area">
+        <img src="customer-value.jpg" alt="Customer value visualization">
+      </div>
+
+      <div class="text-area">
+        <p>
+          <strong>Performance Monitoring:</strong>
+          The sales force's performance is monitored to ensure that the effort is
+          indeed correlating with the expected return on investment from each
+          customer segment.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- SLIDE 7 -->
+  <div class="slide">
+    <div class="slide-content">
+
+      <div class="image-area">
+        <img src="customer-value.jpg" alt="Customer value visualization">
+      </div>
+
+      <div class="text-area">
+        <p>
+          <strong>Dynamic Adjustment:</strong>
+          Over time, customers' worth may change, so sales strategies and efforts
+          need to be adjusted accordingly. A once high-worth customer may reduce
+          their order volume, or a low-worth customer might show potential for growth.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- NAVIGATION -->
   <div class="navigation">
-    <button type="button" onclick="changeSlide(-1)">
-      ← Previous
+
+    <button
+      type="button"
+      id="previousButton"
+      onclick="changeSlide(-1)"
+      aria-label="Previous slide">
+      &#10094; Previous
     </button>
 
-    <button type="button" onclick="changeSlide(1)">
-      Next →
-    </button>
-  </div>
+    <div class="counter" id="counter">
+      1 of 7
+    </div>
 
-  <div class="counter" id="counter">
-    1 of 2
+    <button
+      type="button"
+      id="nextButton"
+      onclick="changeSlide(1)"
+      aria-label="Next slide">
+      Next &#10095;
+    </button>
+
   </div>
 
 </div>
@@ -123,21 +308,43 @@ button {
 
 <script>
 let currentSlide = 0;
+
 const slides = document.querySelectorAll(".slide");
 const counter = document.getElementById("counter");
+const previousButton = document.getElementById("previousButton");
+const nextButton = document.getElementById("nextButton");
 
-function changeSlide(direction) {
+function updateCarousel() {
 
-  slides[currentSlide].classList.remove("active");
-
-  currentSlide =
-    (currentSlide + direction + slides.length) % slides.length;
-
-  slides[currentSlide].classList.add("active");
+  slides.forEach(function(slide, index) {
+    slide.classList.toggle("active", index === currentSlide);
+  });
 
   counter.textContent =
     (currentSlide + 1) + " of " + slides.length;
+
+  previousButton.classList.toggle(
+    "hidden",
+    currentSlide === 0
+  );
+
+  nextButton.classList.toggle(
+    "hidden",
+    currentSlide === slides.length - 1
+  );
 }
+
+function changeSlide(direction) {
+
+  const nextSlide = currentSlide + direction;
+
+  if (nextSlide >= 0 && nextSlide < slides.length) {
+    currentSlide = nextSlide;
+    updateCarousel();
+  }
+}
+
+updateCarousel();
 </script>
 
 </body>
