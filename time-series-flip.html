@@ -1,25 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<title>Flip Card Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Time Series Analysis Flip Card</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+}
+
+/* COMPLETE CARD */
+
+.card {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 500px;
+  margin: 0 auto;
+}
+
+/* FRONT */
+
+.front {
+  position: relative;
+  min-height: 500px;
+  background-image: url("time-series-bulbs.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  overflow: hidden;
+}
+
+.front-content {
+  min-height: 500px;
+  padding: 32px 28px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0 0 15px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.35);
+}
+
+.intro {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.45;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.40);
+}
+
+/* BACK */
+
+.back {
+  display: none;
+  min-height: 500px;
+  background: #195c3f;
+  color: #ffffff;
+  padding: 28px;
+}
+
+.back-box {
+  border: 3px solid #9fd6da;
+  padding: 18px 22px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.back-box p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.back-box ul {
+  margin-top: 5px;
+  margin-bottom: 24px;
+}
+
+.back-box li {
+  margin-bottom: 7px;
+}
+
+/* FLIP BUTTON */
+
+.button-area {
+  margin-top: auto;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.back .button-area {
+  margin-top: 25px;
+}
+
+.flip-button {
+  background: #f47721;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.flip-button:hover {
+  background: #d95f0e;
+}
+
+.flip-button:focus {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .front,
+  .front-content,
+  .back {
+    min-height: 600px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .intro {
+    font-size: 17px;
+  }
+
+  .back-box {
+    font-size: 16px;
+  }
+
+}
+
+</style>
 </head>
 
-<body style="font-family:Arial; background:white; padding:30px;">
 
-<h1 style="color:#175c3f;">
-Time Series Analysis
-</h1>
+<body>
 
-<img
-  src="time-series-bulbs.png"
-  alt="Three colorful light bulbs"
-  style="width:100%; max-width:800px; height:auto;">
+<div class="card">
 
-<p>
-If you can see this text and the three-lightbulb image,
-the page and image are working correctly.
-</p>
+
+<!-- FRONT -->
+
+<div
+  class="front"
+  id="front">
+
+  <div class="front-content">
+
+    <h1 class="title">
+      Time Series Analysis
+    </h1>
+
+    <p class="intro">
+      Time series analysis is used to analyze and predict patterns
+      in sequential data points over time. In marketing, this
+      technique is commonly applied to understand historical trends
+      and make predictions based on past performance.
+    </p>
+
+
+    <div class="button-area">
+
+      <button
+        class="flip-button"
+        type="button"
+        onclick="showBack()">
+
+        Flip &#8635;
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- BACK -->
+
+<div
+  class="back"
+  id="back">
+
+  <div class="back-box">
+
+    <p>
+      <strong>
+        Key Components of Time Series Analysis:
+      </strong>
+    </p>
+
+    <ul>
+
+      <li>
+        <strong>Trend:</strong>
+        The long-term movement or direction of the data over time.
+      </li>
+
+      <li>
+        <strong>Seasonality:</strong>
+        Regular patterns or fluctuations that occur at fixed intervals.
+      </li>
+
+      <li>
+        <strong>Noise:</strong>
+        Random variations or irregularities in the data that cannot
+        be attributed to specific factors.
+      </li>
+
+    </ul>
+
+
+    <p>
+      <strong>
+        Methods Used in Time Series Analysis:
+      </strong>
+    </p>
+
+    <ul>
+
+      <li>
+        <strong>Moving averages:</strong>
+        Used to smooth out short-term fluctuations and highlight
+        underlying trends.
+      </li>
+
+      <li>
+        <strong>Exponential smoothing:</strong>
+        Assigning higher weighting to more recent data.
+      </li>
+
+      <li>
+        <strong>
+          Autoregressive integrated moving average (ARIMA):
+        </strong>
+        A combination of autoregression, differencing, and moving
+        averages to make predictions.
+      </li>
+
+    </ul>
+
+  </div>
+
+
+  <div class="button-area">
+
+    <button
+      class="flip-button"
+      type="button"
+      onclick="showFront()">
+
+      Flip &#8635;
+
+    </button>
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+function showBack() {
+
+  document.getElementById("front").style.display = "none";
+
+  document.getElementById("back").style.display = "block";
+
+}
+
+
+function showFront() {
+
+  document.getElementById("back").style.display = "none";
+
+  document.getElementById("front").style.display = "block";
+
+}
+
+</script>
+
 
 </body>
 </html>
