@@ -1,1 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>AI Interactive Grid</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+
+  /* BACKGROUND IMAGE */
+  background-color: #00515b;
+  background-image: url("ai-grid-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* MAIN INTERACTIVE AREA */
+
+.interactive-area {
+  min-height: 650px;
+  padding: 45px 45px 55px;
+  background: rgba(0, 50, 55, 0.18);
+}
+
+.instructions {
+  max-width: 1150px;
+  margin: 0 auto 38px;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.grid {
+  max-width: 1150px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px 35px;
+}
+
+/* INDIVIDUAL ITEM */
+
+.item {
+  text-align: center;
+  min-height: 145px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-title {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 500;
+
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,.35);
+}
+
+/* PLUS BUTTON */
+
+.open-btn {
+  width: 64px;
+  height: 64px;
+  margin-top: 12px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(235, 239, 236, 0.92);
+  color: #00583d;
+
+  font-size: 38px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    transform .2s ease;
+}
+
+.open-btn:hover {
+  background: #f47721;
+  color: #ffffff;
+  transform: scale(1.07);
+}
+
+.open-btn:focus {
+  outline: 4px solid #f47721;
+  outline-offset: 4px;
+}
+
+/* VISITED CHECKMARK */
+
+.open-btn.visited {
+  background: #dce9d8;
+  color: #00583d;
+  font-size: 30px;
+}
+
+/* DARK OVERLAY */
+
+.modal {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 35, 38, 0.82);
+
+  padding: 30px;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+/* WHITE POPUP */
+
+.modal-box {
+  width: min(1000px, 94%);
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  padding: 28px 38px 25px;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,.28);
+}
+
+/* POPUP HEADING */
+
+.modal-title {
+  margin: 0 0 25px;
+
+  border: 3px solid #a8d49f;
+  padding: 10px 12px;
+
+  color: #00583d;
+
+  font-size: 29px;
+  line-height: 1.2;
+
+  font-weight: 700;
+}
+
+/* POPUP DESCRIPTION */
+
+.modal-text {
+  color: #00583d;
+
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+/* CLOSE BUTTON */
+
+.close-area {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.close-btn {
+  border: 0;
+
+  background: #f47721;
+  color: #ffffff;
+
+  padding: 13px 32px;
+
+  font-size: 19px;
+
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #d95f0e;
+}
+
+.close-btn:focus {
+  outline: 4px solid #00583d;
+  outline-offset: 3px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+
+  .interactive-area {
+    padding: 30px 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .item {
+    min-height: auto;
+  }
+
+  .item-title {
+    min-height: auto;
+  }
+
+  .modal {
+    padding: 15px;
+  }
+
+  .modal-box {
+    padding: 22px;
+  }
+
+  .modal-title {
+    font-size: 23px;
+  }
+
+  .modal-text {
+    font-size: 17px;
+  }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="interactive-area">
+
+  <div class="instructions">
+    Select each + to learn more.
+  </div>
+
+  <div class="grid">
+
+
+    <!-- ROW 1 / COLUMN 1 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Data Processing and Integration
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Data Processing and Integration"
+        onclick="openModal(
+          this,
+          'Data Processing and Integration',
+          'AI can handle large and diverse data sets, integrating customer data, demographic information, and geographic locations. It can process this data quickly to identify patterns and insights that may not be visible through manual analysis.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 1 / COLUMN 2 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Predictive Analytics
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Predictive Analytics"
+        onclick="openModal(
+          this,
+          'Predictive Analytics',
+          'AI algorithms can forecast future sales trends, customer growth, and market shifts. This predictive power enables businesses to proactively design territories that accommodate anticipated changes.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 1 / COLUMN 3 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Clustering Algorithms
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Clustering Algorithms"
+        onclick="openModal(
+          this,
+          'Clustering Algorithms',
+          'AI uses advanced clustering techniques to identify natural groupings of customers based on multiple factors, such as location, purchase behavior, and demographic profiles, to find optimal territory centers.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 2 / COLUMN 1 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Optimization
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Optimization"
+        onclick="openModal(
+          this,
+          'Optimization',
+          'AI can apply complex optimization algorithms that consider numerous variables simultaneously to propose the most efficient layout of territories, ensuring each territory is viable and balanced.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 2 / COLUMN 2 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Dynamic Adjustment
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Dynamic Adjustment"
+        onclick="openModal(
+          this,
+          'Dynamic Adjustment',
+          'As market conditions change, AI systems can adjust territory design in real-time, ensuring that territories remain optimal and sales teams are always focusing their efforts where they are most needed.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 2 / COLUMN 3 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Route Optimization
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Route Optimization"
+        onclick="openModal(
+          this,
+          'Route Optimization',
+          'AI can optimize travel routes for sales representatives, ensuring the territory center is not just geographically central but also time-efficient in terms of travel and customer reach.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 3 / COLUMN 1 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Simulation and Scenario Analysis
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Simulation and Scenario Analysis"
+        onclick="openModal(
+          this,
+          'Simulation and Scenario Analysis',
+          'Before finalizing territory designs, AI can simulate various scenarios to predict the outcomes of different territory structures. This helps in understanding the potential impact of each design choice.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 3 / COLUMN 2 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Machine Learning
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Machine Learning"
+        onclick="openModal(
+          this,
+          'Machine Learning',
+          'Over time, machine learning algorithms can learn from sales outcomes and continuously improve the territory design process. They can identify which attributes of territory centers correlate with high performance and refine their selection criteria accordingly.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- ROW 3 / COLUMN 3 -->
+
+    <div class="item">
+
+      <div class="item-title">
+        Salesforce Feedback Integration
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        aria-label="Learn more about Salesforce Feedback Integration"
+        onclick="openModal(
+          this,
+          'Salesforce Feedback Integration',
+          'AI systems can incorporate feedback from the salesforce on the ground into their learning models to improve the relevancy and effectiveness of the territory centers.'
+        )">
+        +
+      </button>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- POPUP -->
+
+<div
+  class="modal"
+  id="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title">
+
+  <div class="modal-box">
+
+    <h2
+      class="modal-title"
+      id="modal-title">
+    </h2>
+
+    <div
+      class="modal-text"
+      id="modal-text">
+    </div>
+
+    <div class="close-area">
+
+      <button
+        class="close-btn"
+        id="closeButton"
+        type="button"
+        onclick="closeModal()">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
+const modalText = document.getElementById("modal-text");
+const closeButton = document.getElementById("closeButton");
+
+let activeButton = null;
+
+
+function openModal(button, title, text) {
+
+  activeButton = button;
+
+  modalTitle.textContent = title;
+  modalText.textContent = text;
+
+  modal.classList.add("show");
+
+  button.textContent = "✓";
+  button.classList.add("visited");
+
+  document.body.style.overflow = "hidden";
+
+  setTimeout(function() {
+    closeButton.focus();
+  }, 50);
+}
+
+
+function closeModal() {
+
+  modal.classList.remove("show");
+
+  document.body.style.overflow = "";
+
+  if (activeButton) {
+    activeButton.focus();
+  }
+}
+
+
+modal.addEventListener("click", function(event) {
+
+  if (event.target === modal) {
+    closeModal();
+  }
+
+});
+
+
+document.addEventListener("keydown", function(event) {
+
+  if (
+    event.key === "Escape" &&
+    modal.classList.contains("show")
+  ) {
+    closeModal();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
