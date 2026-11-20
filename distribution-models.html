@@ -47,21 +47,20 @@ body {
   display: block;
 }
 
-/* CONTENT AREA */
+/* CONTENT */
 
 .content {
   display: flex;
   gap: 30px;
-  align-items: stretch;
-  height: 360px;
+  align-items: flex-start;
+  min-height: 360px;
 }
 
-/* IMAGE AREA */
+/* IMAGE */
 
 .image {
   width: 46%;
   height: 360px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,22 +70,18 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  display: block;
 }
 
-/* DESCRIPTION AREA */
+/* TEXT BOX */
 
 .description {
   width: 54%;
-  height: 360px;
-
+  height: fit-content;
   border: 3px solid #a8d49f;
-
   padding: 18px;
-
   font-size: 18px;
   line-height: 1.4;
-
-  overflow-y: auto;
 }
 
 .description p {
@@ -96,7 +91,7 @@ body {
 .source {
   text-align: right;
   font-size: 15px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 /* NAVIGATION */
@@ -104,15 +99,10 @@ body {
 .navigation {
   width: 100%;
   min-height: 60px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   margin-top: 20px;
-
-  position: relative;
-  z-index: 10;
 }
 
 .navigation-space {
@@ -121,16 +111,11 @@ body {
 
 button {
   min-width: 140px;
-
   background: #f47721;
   color: #ffffff;
-
   border: none;
-
   padding: 12px 20px;
-
   font-size: 17px;
-
   cursor: pointer;
 }
 
@@ -155,8 +140,8 @@ button:focus {
 @media (max-width: 750px) {
 
   .content {
-    height: auto;
     flex-direction: column;
+    min-height: 0;
   }
 
   .image {
@@ -167,11 +152,6 @@ button:focus {
   .description {
     width: 100%;
     height: auto;
-    max-height: 320px;
-  }
-
-  .navigation {
-    margin-top: 18px;
   }
 
   button {
@@ -190,7 +170,6 @@ button:focus {
 
 </head>
 
-
 <body>
 
 <div class="carousel">
@@ -203,11 +182,9 @@ button:focus {
   <div class="content">
 
     <div class="image">
-
       <img
         src="traditional-channel.png"
         alt="Traditional marketing channel diagram">
-
     </div>
 
     <div class="description">
@@ -231,11 +208,9 @@ button:focus {
   <div class="content">
 
     <div class="image">
-
       <img
         src="electronic-channel.png"
         alt="Electronic sales channel diagram">
-
     </div>
 
     <div class="description">
@@ -259,11 +234,9 @@ button:focus {
   <div class="content">
 
     <div class="image">
-
       <img
         src="intensive-distribution.png"
         alt="Intensive distribution diagram">
-
     </div>
 
     <div class="description">
@@ -295,11 +268,9 @@ button:focus {
   <div class="content">
 
     <div class="image">
-
       <img
         src="selective-distribution.png"
         alt="Selective distribution diagram">
-
     </div>
 
     <div class="description">
@@ -333,11 +304,9 @@ button:focus {
   <div class="content">
 
     <div class="image">
-
       <img
         src="exclusive-distribution.png"
         alt="Exclusive distribution diagram">
-
     </div>
 
     <div class="description">
@@ -378,15 +347,11 @@ button:focus {
 
   </div>
 
-
   <div
     class="counter"
     id="counter">
-
     1 of 5
-
   </div>
-
 
   <div class="navigation-space">
 
@@ -427,47 +392,28 @@ function showSlide() {
   for (var i = 0; i < slides.length; i++) {
 
     if (i === current) {
-
       slides[i].classList.add("active");
-
     } else {
-
       slides[i].classList.remove("active");
-
     }
 
   }
 
-
   counter.textContent =
-    (current + 1) +
-    " of " +
-    slides.length;
+    (current + 1) + " of " + slides.length;
 
 
   if (current === 0) {
-
-    previousButton.style.visibility =
-      "hidden";
-
+    previousButton.style.visibility = "hidden";
   } else {
-
-    previousButton.style.visibility =
-      "visible";
-
+    previousButton.style.visibility = "visible";
   }
 
 
   if (current === slides.length - 1) {
-
-    nextButton.style.visibility =
-      "hidden";
-
+    nextButton.style.visibility = "hidden";
   } else {
-
-    nextButton.style.visibility =
-      "visible";
-
+    nextButton.style.visibility = "visible";
   }
 
 }
@@ -476,12 +422,8 @@ function showSlide() {
 function nextSlide() {
 
   if (current < slides.length - 1) {
-
-    current =
-      current + 1;
-
+    current = current + 1;
     showSlide();
-
   }
 
 }
@@ -490,12 +432,8 @@ function nextSlide() {
 function previousSlide() {
 
   if (current > 0) {
-
-    current =
-      current - 1;
-
+    current = current - 1;
     showSlide();
-
   }
 
 }
@@ -504,7 +442,6 @@ function previousSlide() {
 showSlide();
 
 </script>
-
 
 </body>
 </html>
