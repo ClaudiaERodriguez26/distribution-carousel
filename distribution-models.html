@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,21 +13,31 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  padding: 0;
   background: #ffffff;
+  font-family: Arial, sans-serif;
   color: #10201d;
 }
 
+body {
+  padding: 20px;
+}
+
+/* MAIN CAROUSEL */
+
 .carousel {
+  width: 100%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   border-top: 5px solid #f47721;
   border-bottom: 5px solid #f47721;
-  padding: 25px 20px 20px;
+  padding: 25px 20px 18px;
 }
+
+/* SLIDES */
 
 .slide {
   display: none;
@@ -37,17 +47,21 @@ body {
   display: block;
 }
 
+/* CONTENT AREA */
+
 .content {
   display: flex;
   gap: 30px;
   align-items: stretch;
+  height: 360px;
 }
 
-/* IMAGE AREA - SAME SIZE ON ALL SLIDES */
+/* IMAGE AREA */
 
 .image {
   width: 46%;
   height: 360px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,18 +71,21 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
 }
 
-/* TEXT AREA - SAME SIZE ON ALL SLIDES */
+/* DESCRIPTION AREA */
 
 .description {
   width: 54%;
   height: 360px;
+
   border: 3px solid #a8d49f;
+
   padding: 18px;
+
   font-size: 18px;
   line-height: 1.4;
+
   overflow-y: auto;
 }
 
@@ -77,31 +94,48 @@ body {
 }
 
 .source {
-  margin-top: 20px;
   text-align: right;
   font-size: 15px;
+  margin-top: 20px;
 }
 
 /* NAVIGATION */
 
 .navigation {
+  width: 100%;
+  min-height: 60px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 22px;
+
+  margin-top: 20px;
+
+  position: relative;
+  z-index: 10;
+}
+
+.navigation-space {
+  width: 140px;
 }
 
 button {
-  background-color: #f47721;
+  min-width: 140px;
+
+  background: #f47721;
   color: #ffffff;
+
   border: none;
-  padding: 12px 24px;
+
+  padding: 12px 20px;
+
   font-size: 17px;
+
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #d95f0e;
+  background: #d95f0e;
 }
 
 button:focus {
@@ -109,14 +143,11 @@ button:focus {
   outline-offset: 3px;
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 .counter {
   color: #00583d;
-  font-weight: bold;
   font-size: 16px;
+  font-weight: bold;
+  text-align: center;
 }
 
 /* MOBILE */
@@ -124,30 +155,39 @@ button:focus {
 @media (max-width: 750px) {
 
   .content {
+    height: auto;
     flex-direction: column;
   }
 
-  .image,
+  .image {
+    width: 100%;
+    height: 280px;
+  }
+
   .description {
     width: 100%;
     height: auto;
+    max-height: 320px;
   }
 
-  .image {
-    max-height: 330px;
+  .navigation {
+    margin-top: 18px;
   }
 
-  .image img {
-    max-height: 330px;
+  button {
+    min-width: auto;
+    padding: 10px 14px;
+    font-size: 15px;
   }
 
-  .description {
-    font-size: 17px;
+  .navigation-space {
+    width: 90px;
   }
 
 }
 
 </style>
+
 </head>
 
 
@@ -163,9 +203,11 @@ button:focus {
   <div class="content">
 
     <div class="image">
+
       <img
         src="traditional-channel.png"
         alt="Traditional marketing channel diagram">
+
     </div>
 
     <div class="description">
@@ -189,9 +231,11 @@ button:focus {
   <div class="content">
 
     <div class="image">
+
       <img
         src="electronic-channel.png"
         alt="Electronic sales channel diagram">
+
     </div>
 
     <div class="description">
@@ -215,9 +259,11 @@ button:focus {
   <div class="content">
 
     <div class="image">
+
       <img
         src="intensive-distribution.png"
         alt="Intensive distribution diagram">
+
     </div>
 
     <div class="description">
@@ -249,9 +295,11 @@ button:focus {
   <div class="content">
 
     <div class="image">
+
       <img
         src="selective-distribution.png"
         alt="Selective distribution diagram">
+
     </div>
 
     <div class="description">
@@ -285,9 +333,11 @@ button:focus {
   <div class="content">
 
     <div class="image">
+
       <img
         src="exclusive-distribution.png"
         alt="Exclusive distribution diagram">
+
     </div>
 
     <div class="description">
@@ -317,25 +367,40 @@ button:focus {
 
 <div class="navigation">
 
-  <button
-    id="previous"
-    type="button"
-    onclick="previousSlide()">
-    &#10094; Previous
-  </button>
+  <div class="navigation-space">
 
-  <div class="counter" id="counter">
-    1 of 5
+    <button
+      id="previous"
+      type="button"
+      onclick="previousSlide()">
+      &#10094; Previous
+    </button>
+
   </div>
 
-  <button
-    id="next"
-    type="button"
-    onclick="nextSlide()">
-    Next &#10095;
-  </button>
+
+  <div
+    class="counter"
+    id="counter">
+
+    1 of 5
+
+  </div>
+
+
+  <div class="navigation-space">
+
+    <button
+      id="next"
+      type="button"
+      onclick="nextSlide()">
+      Next &#10095;
+    </button>
+
+  </div>
 
 </div>
+
 
 </div>
 
@@ -344,7 +409,8 @@ button:focus {
 
 var current = 0;
 
-var slides = document.querySelectorAll(".slide");
+var slides =
+  document.querySelectorAll(".slide");
 
 var previousButton =
   document.getElementById("previous");
@@ -360,24 +426,48 @@ function showSlide() {
 
   for (var i = 0; i < slides.length; i++) {
 
-    slides[i].style.display =
-      i === current ? "block" : "none";
+    if (i === current) {
+
+      slides[i].classList.add("active");
+
+    } else {
+
+      slides[i].classList.remove("active");
+
+    }
 
   }
+
 
   counter.textContent =
-    (current + 1) + " of " + slides.length;
+    (current + 1) +
+    " of " +
+    slides.length;
+
 
   if (current === 0) {
-    previousButton.classList.add("hidden");
+
+    previousButton.style.visibility =
+      "hidden";
+
   } else {
-    previousButton.classList.remove("hidden");
+
+    previousButton.style.visibility =
+      "visible";
+
   }
 
+
   if (current === slides.length - 1) {
-    nextButton.classList.add("hidden");
+
+    nextButton.style.visibility =
+      "hidden";
+
   } else {
-    nextButton.classList.remove("hidden");
+
+    nextButton.style.visibility =
+      "visible";
+
   }
 
 }
@@ -387,7 +477,8 @@ function nextSlide() {
 
   if (current < slides.length - 1) {
 
-    current = current + 1;
+    current =
+      current + 1;
 
     showSlide();
 
@@ -400,7 +491,8 @@ function previousSlide() {
 
   if (current > 0) {
 
-    current = current - 1;
+    current =
+      current - 1;
 
     showSlide();
 
@@ -412,6 +504,7 @@ function previousSlide() {
 showSlide();
 
 </script>
+
 
 </body>
 </html>
