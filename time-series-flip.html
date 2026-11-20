@@ -2,77 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flip Card Test</title>
+</head>
 
-<title>Time Series Analysis Flip Card</title>
+<body style="font-family:Arial; background:white; padding:30px;">
 
-<style>
+<h1 style="color:#175c3f;">
+Time Series Analysis
+</h1>
 
-* {
-  box-sizing: border-box;
-}
+<img
+  src="time-series-bulbs.png"
+  alt="Three colorful light bulbs"
+  style="width:100%; max-width:800px; height:auto;">
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-  font-family: Arial, sans-serif;
-}
+<p>
+If you can see this text and the three-lightbulb image,
+the page and image are working correctly.
+</p>
 
-body {
-  padding: 20px;
-}
-
-/* FLIP CARD CONTAINER */
-
-.flip-card {
-  width: 100%;
-  max-width: 1100px;
-  height: 500px;
-  margin: 0 auto;
-  perspective: 1400px;
-}
-
-.flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  transition: transform 0.7s ease;
-  transform-style: preserve-3d;
-}
-
-.flip-card.flipped .flip-inner {
-  transform: rotateY(180deg);
-}
-
-/* FRONT AND BACK */
-
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  backface-visibility: hidden;
-
-  overflow: hidden;
-}
-
-/* FRONT */
-
-.card-front {
-  background-color: #f5a331;
-  color: #ffffff;
-
-  background-image:
-    linear-gradient(
-      rgba(0,0,0,0.04),
-      rgba(0,0,0,0.04)
-    ),
-    url("time-series-bulbs.png");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-
+</body>
+</html>
