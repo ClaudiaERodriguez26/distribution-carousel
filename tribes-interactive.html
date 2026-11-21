@@ -1,1 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Customer Tribes Interactive</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  padding: 20px;
+}
+
+/* GRID */
+
+.grid {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* CARD */
+
+.card {
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* IMAGE */
+
+.card-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* GREEN TITLE BAR */
+
+.card-footer {
+  min-height: 58px;
+
+  background: #155c3d;
+  color: #ffffff;
+
+  padding: 12px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.card-title {
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+/* PLUS BUTTON */
+
+.open-button {
+  width: 42px;
+  height: 42px;
+
+  flex: 0 0 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: #ffffff;
+
+  font-size: 30px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.open-button:hover {
+  background: #f47721;
+}
+
+.open-button:focus {
+  outline: 3px solid #f47721;
+  outline-offset: 2px;
+}
+
+/* AFTER VIEWING */
+
+.open-button.visited {
+  color: #b7dca9;
+  font-size: 25px;
+}
+
+/* DARK OVERLAY */
+
+.modal {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 39, 35, 0.82);
+
+  z-index: 1000;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+}
+
+.modal.show {
+  display: flex;
+}
+
+/* WHITE POPUP */
+
+.modal-box {
+  width: min(850px, 94%);
+
+  background: #ffffff;
+
+  padding: 30px;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,.30);
+}
+
+/* POPUP TITLE */
+
+.modal-title {
+  color: #155c3d;
+
+  font-size: 28px;
+  line-height: 1.2;
+
+  margin: 0 0 20px;
+
+  border-bottom: 3px solid #a8d49f;
+  padding-bottom: 12px;
+}
+
+/* POPUP DESCRIPTION */
+
+.modal-text {
+  color: #24372f;
+
+  font-size: 20px;
+  line-height: 1.5;
+
+  margin: 0;
+}
+
+/* CLOSE BUTTON */
+
+.close-area {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.close-button {
+  border: none;
+
+  background: #f47721;
+  color: #ffffff;
+
+  padding: 12px 30px;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #d95f0e;
+}
+
+.close-button:focus {
+  outline: 3px solid #155c3d;
+  outline-offset: 3px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-image {
+    height: 220px;
+  }
+
+  .card-title {
+    font-size: 17px;
+  }
+
+  .modal-title {
+    font-size: 23px;
+  }
+
+  .modal-text {
+    font-size: 17px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="grid">
+
+
+<!-- CARD 1 -->
+
+<div class="card">
+
+  <img
+    class="card-image"
+    src="diet-enthusiast.jpg"
+    alt="Feet standing on a digital scale">
+
+  <div class="card-footer">
+
+    <div class="card-title">
+      Tribe: Diet Enthusiast
+    </div>
+
+    <button
+      class="open-button"
+      type="button"
+      aria-label="Learn more about Diet Enthusiast"
+      onclick="openModal(
+        this,
+        'Tribe: Diet Enthusiast',
+        'Focuses on tracking weight and making mindful food choices.'
+      )">
+      +
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="card">
+
+  <img
+    class="card-image"
+    src="weight-watchers-loyalist.jpg"
+    alt="Fresh lemon being squeezed into green smoothie ingredients">
+
+  <div class="card-footer">
+
+    <div class="card-title">
+      Tribe: Weight Watchers Loyalist
+    </div>
+
+    <button
+      class="open-button"
+      type="button"
+      aria-label="Learn more about Weight Watchers Loyalist"
+      onclick="openModal(
+        this,
+        'Tribe: Weight Watchers Loyalist',
+        'Prefers structured, balanced eating and familiar weight-management routines.'
+      )">
+      +
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- CARD 3 -->
+
+<div class="card">
+
+  <img
+    class="card-image"
+    src="diy-foodie.jpg"
+    alt="Colorful bowl of fresh vegetables and healthy food">
+
+  <div class="card-footer">
+
+    <div class="card-title">
+      Tribe: DIY Foodie
+    </div>
+
+    <button
+      class="open-button"
+      type="button"
+      aria-label="Learn more about DIY Foodie"
+      onclick="openModal(
+        this,
+        'Tribe: DIY Foodie',
+        'Enjoys preparing fresh, colorful, homemade meals.'
+      )">
+      +
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- CARD 4 -->
+
+<div class="card">
+
+  <img
+    class="card-image"
+    src="fitness-fashionista.jpg"
+    alt="Fork wrapped with measuring tape on a yellow background">
+
+  <div class="card-footer">
+
+    <div class="card-title">
+      Tribe: Fitness Fashionista
+    </div>
+
+    <button
+      class="open-button"
+      type="button"
+      aria-label="Learn more about Fitness Fashionista"
+      onclick="openModal(
+        this,
+        'Tribe: Fitness Fashionista',
+        'Combines healthy living with an interest in fitness and style.'
+      )">
+      +
+    </button>
+
+  </div>
+
+</div>
+
+
+</div>
+
+
+<!-- POPUP -->
+
+<div
+  class="modal"
+  id="modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalTitle">
+
+  <div class="modal-box">
+
+    <h2
+      class="modal-title"
+      id="modalTitle">
+    </h2>
+
+    <p
+      class="modal-text"
+      id="modalText">
+    </p>
+
+    <div class="close-area">
+
+      <button
+        class="close-button"
+        id="closeButton"
+        type="button"
+        onclick="closeModal()">
+
+        Close
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+var modal =
+  document.getElementById("modal");
+
+var modalTitle =
+  document.getElementById("modalTitle");
+
+var modalText =
+  document.getElementById("modalText");
+
+var closeButton =
+  document.getElementById("closeButton");
+
+var activeButton = null;
+
+
+function openModal(button, title, text) {
+
+  activeButton = button;
+
+  modalTitle.textContent = title;
+
+  modalText.textContent = text;
+
+  modal.classList.add("show");
+
+  button.textContent = "✓";
+
+  button.classList.add("visited");
+
+  document.body.style.overflow = "hidden";
+
+  setTimeout(function() {
+    closeButton.focus();
+  }, 50);
+
+}
+
+
+function closeModal() {
+
+  modal.classList.remove("show");
+
+  document.body.style.overflow = "";
+
+  if (activeButton) {
+    activeButton.focus();
+  }
+
+}
+
+
+modal.addEventListener(
+  "click",
+  function(event) {
+
+    if (event.target === modal) {
+      closeModal();
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (
+      event.key === "Escape" &&
+      modal.classList.contains("show")
+    ) {
+      closeModal();
+    }
+
+  }
+);
+
+</script>
+
+
+</body>
+</html>
