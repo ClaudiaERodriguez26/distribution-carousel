@@ -1,1 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="referrer"
+  content="strict-origin-when-cross-origin">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+<title>Recommended Video</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+}
+
+body {
+  padding: 20px;
+}
+
+/* MAIN AREA */
+
+.recommended-video {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 28px;
+  background: #eeeeee;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: stretch;
+}
+
+/* LEFT VIDEO ICON */
+
+.icon-area {
+  min-height: 320px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-right: 5px solid #f47721;
+}
+
+.video-icon {
+  width: 130px;
+  height: 130px;
+  color: #075b3e;
+}
+
+/* GREEN AREA */
+
+.content-panel {
+  min-height: 320px;
+
+  margin-left: 18px;
+  padding: 30px;
+
+  background: #075b3e;
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heading {
+  margin: 0 0 20px;
+
+  color: #ffffff;
+
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.description {
+  margin: 0 0 25px;
+
+  color: #ffffff;
+
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+/* VIDEO BUTTON */
+
+.video-card {
+  width: 100%;
+
+  padding: 18px 20px;
+
+  border: 3px solid #58a363;
+
+  background: #b7ddd0;
+  color: #102b25;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+.video-card:hover {
+  background: #cce8df;
+}
+
+.video-title {
+  font-size: 19px;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.play-button {
+  width: 55px;
+  height: 55px;
+
+  flex: 0 0 55px;
+
+  border-radius: 50%;
+
+  background: rgba(7, 91, 62, 0.12);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #075b3e;
+
+  font-size: 24px;
+}
+
+/* POPUP */
+
+.modal {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 1000;
+
+  padding: 25px;
+
+  background: rgba(0, 45, 39, 0.88);
+
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-box {
+  width: min(950px, 96%);
+  max-height: 94vh;
+
+  overflow-y: auto;
+
+  padding: 28px;
+
+  background: #ffffff;
+}
+
+.modal-title {
+  margin: 0 0 20px;
+
+  padding: 10px 14px;
+
+  border: 3px solid #a8d49f;
+
+  color: #075b3e;
+
+  font-size: 27px;
+}
+
+/* RESPONSIVE VIDEO */
+
+.video-container {
+  position: relative;
+
+  width: 100%;
+  padding-top: 56.25%;
+
+  background: #000000;
+}
+
+.video-container iframe {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
+
+/* SOURCE */
+
+.source {
+  margin-top: 16px;
+
+  text-align: right;
+
+  color: #075b3e;
+
+  font-size: 16px;
+}
+
+/* FALLBACK LINK */
+
+.youtube-link {
+  margin-top: 12px;
+
+  text-align: center;
+
+  font-size: 15px;
+}
+
+.youtube-link a {
+  color: #075b3e;
+  font-weight: bold;
+}
+
+/* CLOSE */
+
+.close-area {
+  margin-top: 22px;
+  text-align: center;
+}
+
+.close-button {
+  padding: 12px 32px;
+
+  border: none;
+
+  background: #f47721;
+  color: #ffffff;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #d95f0e;
+}
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .icon-area {
+    min-height: 160px;
+
+    border-right: none;
+    border-bottom: 5px solid #f47721;
+  }
+
+  .video-icon {
+    width: 95px;
+    height: 95px;
+  }
+
+  .content-panel {
+    margin-left: 0;
+    margin-top: 15px;
+
+    min-height: 0;
+
+    padding: 24px 20px;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .description,
+  .video-title {
+    font-size: 17px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="recommended-video">
+
+  <div class="layout">
+
+
+    <!-- LEFT ICON -->
+
+    <div class="icon-area">
+
+      <svg
+        class="video-icon"
+        viewBox="0 0 160 160"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+
+        <rect
+          x="25"
+          y="35"
+          width="110"
+          height="90"
+          rx="7"
+          stroke="currentColor"
+          stroke-width="6"/>
+
+        <line
+          x1="45"
+          y1="35"
+          x2="45"
+          y2="125"
+          stroke="currentColor"
+          stroke-width="6"/>
+
+        <line
+          x1="115"
+          y1="35"
+          x2="115"
+          y2="125"
+          stroke="currentColor"
+          stroke-width="6"/>
+
+        <line
+          x1="25"
+          y1="60"
+          x2="45"
+          y2="60"
+          stroke="currentColor"
+          stroke-width="6"/>
+
+        <line
+          x1="25"
+          y1="95"
+          x2="45"
+          y2="95"
+          stroke="currentColor"
+          stroke-width="6"/>
+
+        <line
+          x1="115"
+          y1="60"
+          x2="135"
+          y2="60"
+          stroke="currentColor"
+          stroke-width="6"/>
+
+        <line
+          x1="115"
+          y1="95"
+          x2="135"
+          y2="95"
+          stroke="currentColor"
+          stroke-width="6"/>
+
+        <path
+          d="M68 60 L98 80 L68 100 Z"
+          stroke="currentColor"
+          stroke-width="6"
+          stroke-linejoin="round"/>
+
+      </svg>
+
+    </div>
+
+
+    <!-- GREEN PANEL -->
+
+    <div class="content-panel">
+
+      <h1 class="heading">
+        RECOMMENDED VIDEO
+      </h1>
+
+      <p class="description">
+        Watch this video with L'Oréal's Chief Digital Officer
+        Lubomira Rochet, where she discusses the digital
+        transformations and marketing at L'Oréal.
+      </p>
+
+
+      <button
+        class="video-card"
+        type="button"
+        onclick="openVideo()">
+
+        <span class="video-title">
+          L'Oréal Chief Digital Officer<br>
+          on CNBC
+        </span>
+
+        <span class="play-button">
+          ▶
+        </span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- VIDEO POPUP -->
+
+<div
+  class="modal"
+  id="videoModal">
+
+  <div class="modal-box">
+
+    <h2 class="modal-title">
+      L'Oréal Chief Digital Officer on CNBC
+    </h2>
+
+
+    <div
+      class="video-container"
+      id="videoContainer">
+    </div>
+
+
+    <div class="source">
+      Source: (L'Oréal Groupe, 2019)
+    </div>
+
+
+    <div class="youtube-link">
+
+      If the video does not display,
+      <a
+        href="https://www.youtube.com/watch?v=aMEsnLtFsU0"
+        target="_blank"
+        rel="noopener">
+        watch it directly on YouTube
+      </a>.
+
+    </div>
+
+
+    <div class="close-area">
+
+      <button
+        class="close-button"
+        type="button"
+        onclick="closeVideo()">
+
+        Close
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function openVideo() {
+
+  var modal =
+    document.getElementById("videoModal");
+
+  var container =
+    document.getElementById("videoContainer");
+
+
+  container.innerHTML =
+    '<iframe ' +
+    'src="https://www.youtube.com/embed/aMEsnLtFsU0?rel=0&playsinline=1" ' +
+    'title="L\\'Oréal Chief Digital Officer on CNBC" ' +
+    'referrerpolicy="strict-origin-when-cross-origin" ' +
+    'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
+    'allowfullscreen>' +
+    '</iframe>';
+
+
+  modal.classList.add("show");
+
+}
+
+
+function closeVideo() {
+
+  var modal =
+    document.getElementById("videoModal");
+
+  var container =
+    document.getElementById("videoContainer");
+
+
+  modal.classList.remove("show");
+
+
+  /* Removes the video so playback stops */
+
+  container.innerHTML = "";
+
+}
+
+
+/* CLOSE IF STUDENT CLICKS OUTSIDE POPUP */
+
+document
+  .getElementById("videoModal")
+  .addEventListener(
+    "click",
+    function(event) {
+
+      if (event.target === this) {
+        closeVideo();
+      }
+
+    }
+  );
+
+
+/* CLOSE WITH ESCAPE KEY */
+
+document.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Escape") {
+      closeVideo();
+    }
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
