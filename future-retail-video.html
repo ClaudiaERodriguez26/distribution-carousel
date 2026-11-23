@@ -1,1 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="referrer"
+  content="strict-origin-when-cross-origin">
+
+<title>Recommended Video: The Future of Retail</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+}
+
+body {
+  padding: 20px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* MAIN COMPONENT */
+
+.recommended-video {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px;
+  background: #eeeeee;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  align-items: stretch;
+}
+
+/* LEFT IMAGE AREA */
+
+.icon-area {
+  width: 230px;
+  min-height: 350px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 25px;
+  overflow: hidden;
+
+  border-right: 5px solid #f47721;
+}
+
+.video-icon-image {
+  width: 170px !important;
+  height: 170px !important;
+
+  max-width: 170px !important;
+  max-height: 170px !important;
+
+  object-fit: contain;
+  display: block;
+}
+
+/* DARK-GREEN PANEL */
+
+.content-panel {
+  min-height: 350px;
+
+  margin-left: 20px;
+  padding: 42px 45px;
+
+  background: #075b3e;
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* HEADING — NO BORDER */
+
+.heading {
+  margin: 0 0 22px;
+
+  color: #ffffff;
+
+  font-size: 35px;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+/* DESCRIPTION */
+
+.description {
+  margin: 0 0 30px;
+
+  color: #ffffff;
+
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+/* SMALLER VIDEO CARD, ALIGNED LEFT */
+
+.video-card {
+  width: 440px;
+  max-width: 86%;
+
+  padding: 17px 19px;
+
+  border: none;
+
+  background: #b7ddd5;
+  color: #173e35;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  background: #cce9e3;
+}
+
+.video-card:focus {
+  outline: 4px solid #f47721;
+  outline-offset: 4px;
+}
+
+.video-card-text {
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+/* PLAY SYMBOL */
+
+.play-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+
+  border-radius: 50%;
+
+  background: #075b3e;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 4px;
+  font-size: 22px;
+}
+
+/* MODAL OVERLAY */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  padding: 18px;
+
+  background: rgba(0, 42, 37, 0.91);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+/* WHITE DIALOG */
+
+.modal-box {
+  width: min(900px, 96%);
+  max-height: 94vh;
+
+  overflow-y: auto;
+
+  padding: 25px;
+
+  background: #ffffff;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.36);
+}
+
+/* DIALOG TITLE */
+
+.modal-title {
+  margin: 0 0 20px;
+  padding: 10px 14px;
+
+  border: 3px solid #a8d49f;
+
+  color: #075b3e;
+
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+/* RESPONSIVE 16:9 VIDEO */
+
+.video-container {
+  position: relative;
+
+  width: 100%;
+  padding-top: 56.25%;
+
+  overflow: hidden;
+  background: #000000;
+}
+
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
+
+/* SOURCE AND FALLBACK */
+
+.source {
+  margin: 15px 0 0;
+
+  color: #35483f;
+
+  font-size: 15px;
+  text-align: right;
+}
+
+.fallback {
+  margin: 10px 0 0;
+
+  color: #35483f;
+
+  font-size: 15px;
+  text-align: center;
+}
+
+.fallback a {
+  color: #075b3e;
+  font-weight: 700;
+}
+
+/* CLOSE BUTTON */
+
+.close-area {
+  margin-top: 22px;
+  text-align: center;
+}
+
+.close-button {
+  padding: 12px 32px;
+
+  border: none;
+
+  background: #f47721;
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #d95f0e;
+}
+
+.close-button:focus {
+  outline: 4px solid #075b3e;
+  outline-offset: 3px;
+}
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .recommended-video {
+    padding: 18px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .icon-area {
+    width: 100%;
+    min-height: 180px;
+
+    border-right: none;
+    border-bottom: 5px solid #f47721;
+  }
+
+  .video-icon-image {
+    width: 140px !important;
+    height: 140px !important;
+
+    max-width: 140px !important;
+    max-height: 140px !important;
+  }
+
+  .content-panel {
+    min-height: 0;
+
+    margin: 16px 0 0;
+    padding: 28px 22px;
+  }
+
+  .heading {
+    font-size: 27px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .video-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .video-card-text {
+    font-size: 16px;
+  }
+
+  .modal {
+    padding: 8px;
+  }
+
+  .modal-box {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .modal-title {
+    font-size: 21px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- RECOMMENDED VIDEO COMPONENT -->
+
+<section
+  class="recommended-video"
+  aria-labelledby="recommendedHeading">
+
+  <div class="layout">
+
+
+    <!-- FILMSTRIP IMAGE -->
+
+    <div class="icon-area">
+
+      <img
+        src="video-play-icon.png"
+        alt="Video play icon"
+        class="video-icon-image">
+
+    </div>
+
+
+    <!-- GREEN PANEL -->
+
+    <div class="content-panel">
+
+      <h1
+        class="heading"
+        id="recommendedHeading">
+
+        RECOMMENDED VIDEO
+
+      </h1>
+
+
+      <p class="description">
+
+        Watch this video about the future of retail.
+
+      </p>
+
+
+      <button
+        class="video-card"
+        id="openVideoButton"
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls="videoModal">
+
+        <span class="video-card-text">
+
+          CGI Omnichannel - The Future of Retail
+
+        </span>
+
+
+        <span
+          class="play-icon"
+          aria-hidden="true">
+
+          ▶
+
+        </span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- VIDEO DIALOG -->
+
+<div
+  class="modal"
+  id="videoModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="videoModalTitle"
+  hidden>
+
+  <div
+    class="modal-box"
+    role="document">
+
+
+    <h2
+      class="modal-title"
+      id="videoModalTitle">
+
+      CGI Omnichannel - The Future of Retail
+
+    </h2>
+
+
+    <div class="video-container">
+
+      <iframe
+        id="youtubePlayer"
+        src="about:blank"
+        data-video-src="https://www.youtube.com/embed/XxeOl1CCNOw?playsinline=1&amp;rel=0"
+        title="CGI Omnichannel - The Future of Retail"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+
+    <p class="source">
+
+      Source: CGI
+
+    </p>
+
+
+    <p class="fallback">
+
+      If the embedded video does not load,
+
+      <a
+        href="https://www.youtube.com/watch?v=XxeOl1CCNOw"
+        target="_blank"
+        rel="noopener">
+
+        watch it directly on YouTube
+
+      </a>.
+
+    </p>
+
+
+    <div class="close-area">
+
+      <button
+        class="close-button"
+        id="closeVideoButton"
+        type="button">
+
+        Close
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+(function () {
+
+  var modal =
+    document.getElementById("videoModal");
+
+  var openButton =
+    document.getElementById("openVideoButton");
+
+  var closeButton =
+    document.getElementById("closeVideoButton");
+
+  var player =
+    document.getElementById("youtubePlayer");
+
+  var previousFocus = null;
+
+
+  function openVideo() {
+
+    previousFocus =
+      document.activeElement;
+
+    player.src =
+      player.getAttribute("data-video-src");
+
+    modal.hidden = false;
+
+    document.body.classList.add("modal-open");
+
+    closeButton.focus();
+
+  }
+
+
+  function closeVideo() {
+
+    modal.hidden = true;
+
+    document.body.classList.remove("modal-open");
+
+    /*
+      Resetting the source stops video playback.
+    */
+
+    player.src = "about:blank";
+
+    if (previousFocus) {
+      previousFocus.focus();
+    }
+
+  }
+
+
+  openButton.addEventListener(
+    "click",
+    openVideo
+  );
+
+
+  closeButton.addEventListener(
+    "click",
+    closeVideo
+  );
+
+
+  /* CLOSE BY CLICKING OUTSIDE THE WHITE DIALOG */
+
+  modal.addEventListener(
+    "click",
+    function (event) {
+
+      if (event.target === modal) {
+        closeVideo();
+      }
+
+    }
+  );
+
+
+  /* CLOSE WITH ESCAPE */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Escape" &&
+        modal.hidden === false
+      ) {
+
+        closeVideo();
+
+      }
+
+    }
+  );
+
+}());
+
+</script>
+
+
+</body>
+
+</html>
