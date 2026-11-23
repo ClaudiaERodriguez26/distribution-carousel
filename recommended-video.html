@@ -5,14 +5,15 @@
 <meta charset="UTF-8">
 
 <meta
-  name="referrer"
-  content="strict-origin-when-cross-origin">
-
-<meta
   name="viewport"
   content="width=device-width, initial-scale=1.0">
 
-<title>Recommended Video</title>
+<!-- Helps YouTube receive the GitHub Pages origin -->
+<meta
+  name="referrer"
+  content="strict-origin-when-cross-origin">
+
+<title>L'Oréal Recommended Video</title>
 
 <style>
 
@@ -24,34 +25,40 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
   background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   padding: 20px;
 }
 
-/* MAIN AREA */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* MAIN COMPONENT */
 
 .recommended-video {
   width: 100%;
   max-width: 1150px;
+  min-height: 420px;
   margin: 0 auto;
   padding: 28px;
   background: #eeeeee;
 }
 
-.layout {
+.recommended-layout {
   display: grid;
   grid-template-columns: 220px 1fr;
   align-items: stretch;
 }
 
-/* LEFT VIDEO ICON */
+/* LEFT ICON AREA */
 
 .icon-area {
-  min-height: 320px;
+  min-height: 340px;
+  padding: 25px;
 
   display: flex;
   align-items: center;
@@ -61,18 +68,17 @@ body {
 }
 
 .video-icon {
-  width: 130px;
-  height: 130px;
+  width: 135px;
+  height: 135px;
   color: #075b3e;
 }
 
-/* GREEN AREA */
+/* RIGHT GREEN PANEL */
 
 .content-panel {
-  min-height: 320px;
-
+  min-height: 340px;
   margin-left: 18px;
-  padding: 30px;
+  padding: 28px 34px;
 
   background: #075b3e;
   color: #ffffff;
@@ -82,133 +88,143 @@ body {
   justify-content: center;
 }
 
-.heading {
-  margin: 0 0 20px;
+/* HEADING */
 
-  color: #ffffff;
+.heading-box {
+  margin-bottom: 20px;
+  padding: 10px 15px;
 
-  font-size: 32px;
-  font-weight: bold;
+  border: 3px solid #58a363;
 }
 
-.description {
-  margin: 0 0 25px;
-
+.heading-box h1 {
+  margin: 0;
   color: #ffffff;
+  font-size: 30px;
+  line-height: 1.2;
+}
 
+/* DESCRIPTION */
+
+.description {
+  margin: 0 0 24px;
+  color: #ffffff;
   font-size: 19px;
   line-height: 1.5;
 }
 
-/* VIDEO BUTTON */
+/* CLICKABLE VIDEO CARD */
 
 .video-card {
   width: 100%;
+  padding: 17px 20px;
 
-  padding: 18px 20px;
+  border: none;
 
-  border: 3px solid #58a363;
-
-  background: #b7ddd0;
-  color: #102b25;
+  background: #b3d99f;
+  color: #173e2c;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 18px;
 
+  text-align: left;
   cursor: pointer;
 }
 
 .video-card:hover {
-  background: #cce8df;
+  background: #c7e6b8;
 }
 
-.video-title {
+.video-card:focus {
+  outline: 4px solid #f47721;
+  outline-offset: 4px;
+}
+
+.video-card-text {
   font-size: 19px;
   line-height: 1.35;
-  text-align: left;
+  font-weight: 700;
 }
 
-.play-button {
-  width: 55px;
-  height: 55px;
-
-  flex: 0 0 55px;
+.play-icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
 
   border-radius: 50%;
 
-  background: rgba(7, 91, 62, 0.12);
+  background: #075b3e;
+  color: #ffffff;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  color: #075b3e;
-
-  font-size: 24px;
+  padding-left: 4px;
+  font-size: 23px;
 }
 
-/* POPUP */
+/* MODAL OVERLAY */
 
 .modal {
-  display: none;
-
   position: fixed;
   inset: 0;
-
   z-index: 1000;
 
-  padding: 25px;
+  padding: 18px;
 
-  background: rgba(0, 45, 39, 0.88);
+  background: rgba(0, 42, 37, 0.90);
 
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.modal.show {
-  display: flex;
+.modal[hidden] {
+  display: none;
 }
 
-.modal-box {
-  width: min(950px, 96%);
-  max-height: 94vh;
+/* MODAL CONTENT */
 
+.modal-box {
+  width: min(820px, 96%);
+  max-height: 96vh;
   overflow-y: auto;
 
-  padding: 28px;
+  padding: 24px;
 
   background: #ffffff;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
 }
 
 .modal-title {
-  margin: 0 0 20px;
-
+  margin: 0 0 18px;
   padding: 10px 14px;
 
   border: 3px solid #a8d49f;
 
   color: #075b3e;
 
-  font-size: 27px;
+  font-size: 25px;
+  line-height: 1.25;
 }
 
 /* RESPONSIVE VIDEO */
 
 .video-container {
   position: relative;
-
   width: 100%;
   padding-top: 56.25%;
-
+  overflow: hidden;
   background: #000000;
 }
 
 .video-container iframe {
   position: absolute;
-
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
@@ -219,34 +235,30 @@ body {
 /* SOURCE */
 
 .source {
-  margin-top: 16px;
-
+  margin: 14px 0 5px;
+  color: #35483f;
+  font-size: 15px;
   text-align: right;
-
-  color: #075b3e;
-
-  font-size: 16px;
 }
 
 /* FALLBACK LINK */
 
-.youtube-link {
-  margin-top: 12px;
-
-  text-align: center;
-
+.fallback {
+  margin: 10px 0 0;
+  color: #35483f;
   font-size: 15px;
+  text-align: center;
 }
 
-.youtube-link a {
+.fallback a {
   color: #075b3e;
-  font-weight: bold;
+  font-weight: 700;
 }
 
-/* CLOSE */
+/* CLOSE BUTTON */
 
 .close-area {
-  margin-top: 22px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -259,6 +271,7 @@ body {
   color: #ffffff;
 
   font-size: 18px;
+  font-weight: 700;
 
   cursor: pointer;
 }
@@ -267,11 +280,33 @@ body {
   background: #d95f0e;
 }
 
+.close-button:focus {
+  outline: 4px solid #075b3e;
+  outline-offset: 3px;
+}
+
+/* DIAGNOSTIC MESSAGE */
+
+.diagnostic {
+  margin: 12px 0 0;
+  color: #ffffff;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
 /* MOBILE */
 
-@media (max-width: 750px) {
+@media (max-width: 760px) {
 
-  .layout {
+  body {
+    padding: 10px;
+  }
+
+  .recommended-video {
+    padding: 18px;
+  }
+
+  .recommended-layout {
     grid-template-columns: 1fr;
   }
 
@@ -283,46 +318,60 @@ body {
   }
 
   .video-icon {
-    width: 95px;
-    height: 95px;
+    width: 100px;
+    height: 100px;
   }
 
   .content-panel {
-    margin-left: 0;
-    margin-top: 15px;
-
     min-height: 0;
-
+    margin: 16px 0 0;
     padding: 24px 20px;
   }
 
-  .heading {
-    font-size: 26px;
+  .heading-box h1 {
+    font-size: 24px;
   }
 
   .description,
-  .video-title {
+  .video-card-text {
     font-size: 17px;
+  }
+
+  .modal {
+    padding: 8px;
+  }
+
+  .modal-box {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .modal-title {
+    font-size: 20px;
   }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 
-<div class="recommended-video">
+<!-- MAIN RECOMMENDED VIDEO COMPONENT -->
 
-  <div class="layout">
+<section
+  class="recommended-video"
+  aria-labelledby="recommendedHeading">
+
+  <div class="recommended-layout">
 
 
-    <!-- LEFT ICON -->
+    <!-- LEFT VIDEO ICON -->
 
-    <div class="icon-area">
+    <div
+      class="icon-area"
+      aria-hidden="true">
 
       <svg
         class="video-icon"
@@ -331,157 +380,164 @@ body {
         xmlns="http://www.w3.org/2000/svg">
 
         <rect
-          x="25"
+          x="20"
           y="35"
-          width="110"
-          height="90"
+          width="105"
+          height="82"
           rx="7"
           stroke="currentColor"
-          stroke-width="6"/>
+          stroke-width="7"/>
 
-        <line
-          x1="45"
-          y1="35"
-          x2="45"
-          y2="125"
+        <path
+          d="M125 58 L146 47 V105 L125 94 Z"
           stroke="currentColor"
-          stroke-width="6"/>
+          stroke-width="7"
+          stroke-linejoin="round"/>
 
-        <line
-          x1="115"
-          y1="35"
-          x2="115"
-          y2="125"
-          stroke="currentColor"
-          stroke-width="6"/>
-
-        <line
-          x1="25"
-          y1="60"
-          x2="45"
-          y2="60"
-          stroke="currentColor"
-          stroke-width="6"/>
-
-        <line
-          x1="25"
-          y1="95"
-          x2="45"
-          y2="95"
-          stroke="currentColor"
-          stroke-width="6"/>
-
-        <line
-          x1="115"
-          y1="60"
-          x2="135"
-          y2="60"
-          stroke="currentColor"
-          stroke-width="6"/>
-
-        <line
-          x1="115"
-          y1="95"
-          x2="135"
-          y2="95"
+        <circle
+          cx="71"
+          cy="76"
+          r="25"
           stroke="currentColor"
           stroke-width="6"/>
 
         <path
-          d="M68 60 L98 80 L68 100 Z"
+          d="M65 62 L87 76 L65 90 Z"
+          fill="currentColor"/>
+
+        <path
+          d="M51 117 L42 137"
           stroke="currentColor"
-          stroke-width="6"
-          stroke-linejoin="round"/>
+          stroke-width="7"
+          stroke-linecap="round"/>
+
+        <path
+          d="M90 117 L99 137"
+          stroke="currentColor"
+          stroke-width="7"
+          stroke-linecap="round"/>
+
+        <path
+          d="M35 137 H106"
+          stroke="currentColor"
+          stroke-width="7"
+          stroke-linecap="round"/>
 
       </svg>
 
     </div>
 
 
-    <!-- GREEN PANEL -->
+    <!-- RIGHT CONTENT PANEL -->
 
     <div class="content-panel">
 
-      <h1 class="heading">
-        RECOMMENDED VIDEO
-      </h1>
+      <div class="heading-box">
+
+        <h1 id="recommendedHeading">
+          RECOMMENDED VIDEO
+        </h1>
+
+      </div>
+
 
       <p class="description">
         Watch this video with L'Oréal's Chief Digital Officer
-        Lubomira Rochet, where she discusses the digital
-        transformations and marketing at L'Oréal.
+        Lubomira Rochet, where she discusses digital
+        transformation and marketing at L'Oréal.
       </p>
 
 
       <button
         class="video-card"
+        id="openVideoButton"
         type="button"
-        onclick="openVideo()">
+        aria-haspopup="dialog"
+        aria-controls="videoModal">
 
-        <span class="video-title">
-          L'Oréal Chief Digital Officer<br>
-          on CNBC
+        <span class="video-card-text">
+          L'Oréal Chief Digital Officer on CNBC
         </span>
 
-        <span class="play-button">
+        <span
+          class="play-icon"
+          aria-hidden="true">
           ▶
         </span>
 
       </button>
 
+
+      <p class="diagnostic">
+        If you can see this component, the GitHub page loaded correctly.
+      </p>
+
     </div>
 
   </div>
 
-</div>
+</section>
 
 
-<!-- VIDEO POPUP -->
+<!-- VIDEO MODAL -->
 
 <div
   class="modal"
-  id="videoModal">
+  id="videoModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="videoModalTitle"
+  hidden>
 
-  <div class="modal-box">
+  <div
+    class="modal-box"
+    role="document">
 
-    <h2 class="modal-title">
+    <h2
+      class="modal-title"
+      id="videoModalTitle">
       L'Oréal Chief Digital Officer on CNBC
     </h2>
 
 
-    <div
-      class="video-container"
-      id="videoContainer">
+    <div class="video-container">
+
+      <iframe
+        id="youtubePlayer"
+        src="about:blank"
+        data-video-src="https://www.youtube.com/embed/aMEsnLtFsU0?playsinline=1&amp;rel=0"
+        title="L'Oréal Chief Digital Officer on CNBC"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
     </div>
 
 
-    <div class="source">
+    <p class="source">
       Source: (L'Oréal Groupe, 2019)
-    </div>
+    </p>
 
 
-    <div class="youtube-link">
-
-      If the video does not display,
+    <p class="fallback">
+      If the embedded player does not load,
       <a
         href="https://www.youtube.com/watch?v=aMEsnLtFsU0"
         target="_blank"
         rel="noopener">
-        watch it directly on YouTube
+        watch the video directly on YouTube
       </a>.
-
-    </div>
+    </p>
 
 
     <div class="close-area">
 
       <button
         class="close-button"
-        type="button"
-        onclick="closeVideo()">
-
+        id="closeVideoButton"
+        type="button">
         Close
-
       </button>
 
     </div>
@@ -491,60 +547,88 @@ body {
 </div>
 
 
+<noscript>
+  <p style="padding:20px; color:#075b3e;">
+    JavaScript is required for the video popup.
+    <a href="https://www.youtube.com/watch?v=aMEsnLtFsU0">
+      Watch the video on YouTube.
+    </a>
+  </p>
+</noscript>
+
+
 <script>
 
-function openVideo() {
+(function () {
 
   var modal =
     document.getElementById("videoModal");
 
-  var container =
-    document.getElementById("videoContainer");
+  var openButton =
+    document.getElementById("openVideoButton");
+
+  var closeButton =
+    document.getElementById("closeVideoButton");
+
+  var player =
+    document.getElementById("youtubePlayer");
+
+  var previousFocus = null;
 
 
-  container.innerHTML =
-    '<iframe ' +
-    'src="https://www.youtube.com/embed/aMEsnLtFsU0?rel=0&playsinline=1" ' +
-    'title="L\\'Oréal Chief Digital Officer on CNBC" ' +
-    'referrerpolicy="strict-origin-when-cross-origin" ' +
-    'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ' +
-    'allowfullscreen>' +
-    '</iframe>';
+  function openVideo() {
+
+    previousFocus =
+      document.activeElement;
+
+    player.src =
+      player.getAttribute("data-video-src");
+
+    modal.hidden = false;
+
+    document.body.classList.add("modal-open");
+
+    closeButton.focus();
+
+  }
 
 
-  modal.classList.add("show");
+  function closeVideo() {
 
-}
+    modal.hidden = true;
 
+    document.body.classList.remove("modal-open");
 
-function closeVideo() {
+    /*
+      Resetting the iframe stops playback.
+    */
 
-  var modal =
-    document.getElementById("videoModal");
+    player.src = "about:blank";
 
-  var container =
-    document.getElementById("videoContainer");
+    if (previousFocus) {
+      previousFocus.focus();
+    }
 
-
-  modal.classList.remove("show");
-
-
-  /* Removes the video so playback stops */
-
-  container.innerHTML = "";
-
-}
+  }
 
 
-/* CLOSE IF STUDENT CLICKS OUTSIDE POPUP */
-
-document
-  .getElementById("videoModal")
-  .addEventListener(
+  openButton.addEventListener(
     "click",
-    function(event) {
+    openVideo
+  );
 
-      if (event.target === this) {
+
+  closeButton.addEventListener(
+    "click",
+    closeVideo
+  );
+
+
+  modal.addEventListener(
+    "click",
+    function (event) {
+
+      if (event.target === modal) {
         closeVideo();
       }
 
@@ -552,22 +636,23 @@ document
   );
 
 
-/* CLOSE WITH ESCAPE KEY */
+  document.addEventListener(
+    "keydown",
+    function (event) {
 
-document.addEventListener(
-  "keydown",
-  function(event) {
+      if (
+        event.key === "Escape" &&
+        modal.hidden === false
+      ) {
+        closeVideo();
+      }
 
-    if (event.key === "Escape") {
-      closeVideo();
     }
+  );
 
-  }
-);
+}());
 
 </script>
 
-
 </body>
-
 </html>
