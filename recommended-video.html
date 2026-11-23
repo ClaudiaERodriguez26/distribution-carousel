@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0">
 
-<!-- Helps YouTube receive the GitHub Pages origin -->
 <meta
   name="referrer"
   content="strict-origin-when-cross-origin">
@@ -25,60 +25,68 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
   background: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
   padding: 20px;
 }
 
-body.modal-open {
-  overflow: hidden;
-}
-
-/* MAIN COMPONENT */
+/* MAIN ACTIVITY */
 
 .recommended-video {
   width: 100%;
   max-width: 1150px;
-  min-height: 420px;
   margin: 0 auto;
   padding: 28px;
   background: #eeeeee;
 }
 
-.recommended-layout {
+.layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 230px 1fr;
   align-items: stretch;
 }
 
-/* LEFT ICON AREA */
+/* LEFT IMAGE AREA */
 
 .icon-area {
-  min-height: 340px;
-  padding: 25px;
+  width: 230px;
+  min-height: 330px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  padding: 25px;
+
+  overflow: hidden;
+
   border-right: 5px solid #f47721;
 }
 
-.video-icon {
-  width: 135px;
-  height: 135px;
-  color: #075b3e;
+/* YOUR VIDEO IMAGE - FIXED SIZE */
+
+.video-icon-image {
+  width: 170px !important;
+  height: 170px !important;
+
+  max-width: 170px !important;
+  max-height: 170px !important;
+
+  object-fit: contain;
+
+  display: block;
 }
 
 /* RIGHT GREEN PANEL */
 
 .content-panel {
-  min-height: 340px;
-  margin-left: 18px;
-  padding: 28px 34px;
+  min-height: 330px;
+
+  margin-left: 20px;
+  padding: 30px;
 
   background: #075b3e;
   color: #ffffff;
@@ -92,6 +100,7 @@ body.modal-open {
 
 .heading-box {
   margin-bottom: 20px;
+
   padding: 10px 15px;
 
   border: 3px solid #58a363;
@@ -99,7 +108,9 @@ body.modal-open {
 
 .heading-box h1 {
   margin: 0;
+
   color: #ffffff;
+
   font-size: 30px;
   line-height: 1.2;
 }
@@ -108,7 +119,9 @@ body.modal-open {
 
 .description {
   margin: 0 0 24px;
+
   color: #ffffff;
+
   font-size: 19px;
   line-height: 1.5;
 }
@@ -117,24 +130,27 @@ body.modal-open {
 
 .video-card {
   width: 100%;
-  padding: 17px 20px;
+
+  padding: 18px 20px;
 
   border: none;
 
-  background: #b3d99f;
+  background: #b7dca9;
   color: #173e2c;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 18px;
 
   text-align: left;
+
   cursor: pointer;
 }
 
 .video-card:hover {
-  background: #c7e6b8;
+  background: #c9e6bd;
 }
 
 .video-card:focus {
@@ -145,12 +161,15 @@ body.modal-open {
 .video-card-text {
   font-size: 19px;
   line-height: 1.35;
-  font-weight: 700;
+  font-weight: bold;
 }
+
+/* PLAY CIRCLE */
 
 .play-icon {
   width: 52px;
   height: 52px;
+
   flex: 0 0 52px;
 
   border-radius: 50%;
@@ -163,45 +182,53 @@ body.modal-open {
   justify-content: center;
 
   padding-left: 4px;
+
   font-size: 23px;
 }
 
-/* MODAL OVERLAY */
+/* VIDEO POPUP */
 
 .modal {
+  display: none;
+
   position: fixed;
   inset: 0;
+
   z-index: 1000;
 
-  padding: 18px;
+  padding: 20px;
 
   background: rgba(0, 42, 37, 0.90);
 
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.modal[hidden] {
-  display: none;
+.modal.show {
+  display: flex;
 }
 
-/* MODAL CONTENT */
+/* WHITE POPUP */
 
 .modal-box {
-  width: min(820px, 96%);
-  max-height: 96vh;
+  width: min(900px, 96%);
+
+  max-height: 95vh;
+
   overflow-y: auto;
 
-  padding: 24px;
+  padding: 25px;
 
   background: #ffffff;
 
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
 }
 
+/* POPUP TITLE */
+
 .modal-title {
-  margin: 0 0 18px;
+  margin: 0 0 20px;
+
   padding: 10px 14px;
 
   border: 3px solid #a8d49f;
@@ -216,15 +243,19 @@ body.modal-open {
 
 .video-container {
   position: relative;
+
   width: 100%;
+
   padding-top: 56.25%;
-  overflow: hidden;
+
   background: #000000;
 }
 
 .video-container iframe {
   position: absolute;
-  inset: 0;
+
+  top: 0;
+  left: 0;
 
   width: 100%;
   height: 100%;
@@ -235,30 +266,35 @@ body.modal-open {
 /* SOURCE */
 
 .source {
-  margin: 14px 0 5px;
-  color: #35483f;
-  font-size: 15px;
+  margin-top: 15px;
+
   text-align: right;
-}
 
-/* FALLBACK LINK */
-
-.fallback {
-  margin: 10px 0 0;
-  color: #35483f;
-  font-size: 15px;
-  text-align: center;
-}
-
-.fallback a {
   color: #075b3e;
-  font-weight: 700;
+
+  font-size: 15px;
+}
+
+/* YOUTUBE FALLBACK */
+
+.youtube-link {
+  margin-top: 12px;
+
+  text-align: center;
+
+  font-size: 15px;
+}
+
+.youtube-link a {
+  color: #075b3e;
+  font-weight: bold;
 }
 
 /* CLOSE BUTTON */
 
 .close-area {
-  margin-top: 20px;
+  margin-top: 22px;
+
   text-align: center;
 }
 
@@ -271,7 +307,7 @@ body.modal-open {
   color: #ffffff;
 
   font-size: 18px;
-  font-weight: 700;
+  font-weight: bold;
 
   cursor: pointer;
 }
@@ -285,18 +321,9 @@ body.modal-open {
   outline-offset: 3px;
 }
 
-/* DIAGNOSTIC MESSAGE */
-
-.diagnostic {
-  margin: 12px 0 0;
-  color: #ffffff;
-  font-size: 13px;
-  opacity: 0.85;
-}
-
 /* MOBILE */
 
-@media (max-width: 760px) {
+@media (max-width: 750px) {
 
   body {
     padding: 10px;
@@ -306,25 +333,32 @@ body.modal-open {
     padding: 18px;
   }
 
-  .recommended-layout {
+  .layout {
     grid-template-columns: 1fr;
   }
 
   .icon-area {
-    min-height: 160px;
+    width: 100%;
+    min-height: 180px;
 
     border-right: none;
     border-bottom: 5px solid #f47721;
   }
 
-  .video-icon {
-    width: 100px;
-    height: 100px;
+  .video-icon-image {
+    width: 140px !important;
+    height: 140px !important;
+
+    max-width: 140px !important;
+    max-height: 140px !important;
   }
 
   .content-panel {
     min-height: 0;
-    margin: 16px 0 0;
+
+    margin-left: 0;
+    margin-top: 16px;
+
     padding: 24px 20px;
   }
 
@@ -347,45 +381,46 @@ body.modal-open {
   }
 
   .modal-title {
-    font-size: 20px;
+    font-size: 21px;
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
 
-<!-- MAIN RECOMMENDED VIDEO COMPONENT -->
+<!-- RECOMMENDED VIDEO -->
 
-<section
-  class="recommended-video"
-  aria-labelledby="recommendedHeading">
+<div class="recommended-video">
 
-  <div class="recommended-layout">
+  <div class="layout">
 
 
-    <!-- LEFT VIDEO ICON -->
+    <!-- VIDEO IMAGE -->
 
-<div class="icon-area">
+    <div class="icon-area">
 
-  <img
-    src="video-play-icon.png"
-    alt="Video play icon"
-    class="video-icon-image">
+      <img
+        src="video-play-icon.png"
+        alt="Video play icon"
+        class="video-icon-image">
 
-</div>
+    </div>
 
 
-    <!-- RIGHT CONTENT PANEL -->
+    <!-- GREEN PANEL -->
 
     <div class="content-panel">
 
+
       <div class="heading-box">
 
-        <h1 id="recommendedHeading">
+        <h1>
           RECOMMENDED VIDEO
         </h1>
 
@@ -393,70 +428,66 @@ body.modal-open {
 
 
       <p class="description">
+
         Watch this video with L'Oréal's Chief Digital Officer
-        Lubomira Rochet, where she discusses digital
-        transformation and marketing at L'Oréal.
+        Lubomira Rochet, where she discusses the digital
+        transformations and marketing at L'Oréal.
+
       </p>
 
 
       <button
         class="video-card"
-        id="openVideoButton"
-        type="button"
-        aria-haspopup="dialog"
-        aria-controls="videoModal">
+        id="openVideo"
+        type="button">
 
         <span class="video-card-text">
+
           L'Oréal Chief Digital Officer on CNBC
+
         </span>
+
 
         <span
           class="play-icon"
           aria-hidden="true">
+
           ▶
+
         </span>
 
       </button>
 
 
-      <p class="diagnostic">
-        If you can see this component, the GitHub page loaded correctly.
-      </p>
-
     </div>
 
   </div>
 
-</section>
+</div>
 
 
-<!-- VIDEO MODAL -->
+
+<!-- VIDEO POPUP -->
 
 <div
   class="modal"
-  id="videoModal"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="videoModalTitle"
-  hidden>
+  id="videoModal">
 
-  <div
-    class="modal-box"
-    role="document">
+  <div class="modal-box">
 
-    <h2
-      class="modal-title"
-      id="videoModalTitle">
+
+    <h2 class="modal-title">
+
       L'Oréal Chief Digital Officer on CNBC
+
     </h2>
 
 
     <div class="video-container">
 
       <iframe
-        id="youtubePlayer"
+        id="youtubeVideo"
         src="about:blank"
-        data-video-src="https://www.youtube.com/embed/aMEsnLtFsU0?playsinline=1&amp;rel=0"
         title="L'Oréal Chief Digital Officer on CNBC"
         referrerpolicy="strict-origin-when-cross-origin"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -466,144 +497,130 @@ body.modal-open {
     </div>
 
 
-    <p class="source">
+    <div class="source">
+
       Source: (L'Oréal Groupe, 2019)
-    </p>
+
+    </div>
 
 
-    <p class="fallback">
-      If the embedded player does not load,
+    <div class="youtube-link">
+
+      If the video does not display,
+
       <a
         href="https://www.youtube.com/watch?v=aMEsnLtFsU0"
         target="_blank"
         rel="noopener">
-        watch the video directly on YouTube
+
+        watch it directly on YouTube
+
       </a>.
-    </p>
+
+    </div>
 
 
     <div class="close-area">
 
       <button
         class="close-button"
-        id="closeVideoButton"
+        id="closeVideo"
         type="button">
+
         Close
+
       </button>
 
     </div>
+
 
   </div>
 
 </div>
 
 
-<noscript>
-  <p style="padding:20px; color:#075b3e;">
-    JavaScript is required for the video popup.
-    <a href="https://www.youtube.com/watch?v=aMEsnLtFsU0">
-      Watch the video on YouTube.
-    </a>
-  </p>
-</noscript>
-
 
 <script>
 
-(function () {
+var modal =
+  document.getElementById("videoModal");
 
-  var modal =
-    document.getElementById("videoModal");
+var openButton =
+  document.getElementById("openVideo");
 
-  var openButton =
-    document.getElementById("openVideoButton");
+var closeButton =
+  document.getElementById("closeVideo");
 
-  var closeButton =
-    document.getElementById("closeVideoButton");
-
-  var player =
-    document.getElementById("youtubePlayer");
-
-  var previousFocus = null;
+var youtubeVideo =
+  document.getElementById("youtubeVideo");
 
 
-  function openVideo() {
+function openVideo() {
 
-    previousFocus =
-      document.activeElement;
+  youtubeVideo.src =
+    "https://www.youtube.com/embed/aMEsnLtFsU0?playsinline=1&rel=0";
 
-    player.src =
-      player.getAttribute("data-video-src");
+  modal.classList.add("show");
 
-    modal.hidden = false;
+}
 
-    document.body.classList.add("modal-open");
 
-    closeButton.focus();
+function closeVideo() {
+
+  modal.classList.remove("show");
+
+  youtubeVideo.src =
+    "about:blank";
+
+}
+
+
+openButton.addEventListener(
+  "click",
+  openVideo
+);
+
+
+closeButton.addEventListener(
+  "click",
+  closeVideo
+);
+
+
+/* CLOSE WHEN CLICKING OUTSIDE THE WHITE POPUP */
+
+modal.addEventListener(
+  "click",
+  function(event) {
+
+    if (event.target === modal) {
+
+      closeVideo();
+
+    }
 
   }
+);
 
 
-  function closeVideo() {
+/* CLOSE WITH ESCAPE KEY */
 
-    modal.hidden = true;
+document.addEventListener(
+  "keydown",
+  function(event) {
 
-    document.body.classList.remove("modal-open");
+    if (event.key === "Escape") {
 
-    /*
-      Resetting the iframe stops playback.
-    */
+      closeVideo();
 
-    player.src = "about:blank";
-
-    if (previousFocus) {
-      previousFocus.focus();
     }
 
   }
-
-
-  openButton.addEventListener(
-    "click",
-    openVideo
-  );
-
-
-  closeButton.addEventListener(
-    "click",
-    closeVideo
-  );
-
-
-  modal.addEventListener(
-    "click",
-    function (event) {
-
-      if (event.target === modal) {
-        closeVideo();
-      }
-
-    }
-  );
-
-
-  document.addEventListener(
-    "keydown",
-    function (event) {
-
-      if (
-        event.key === "Escape" &&
-        modal.hidden === false
-      ) {
-        closeVideo();
-      }
-
-    }
-  );
-
-}());
+);
 
 </script>
 
+
 </body>
+
 </html>
