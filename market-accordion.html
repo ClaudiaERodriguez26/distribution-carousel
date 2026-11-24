@@ -14,32 +14,31 @@
 
 body {
   margin: 0;
-  padding: 20px;
+  padding: 12px 20px;
   background: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   color: #102b2c;
 }
 
+/* FULL WIDTH */
 .accordion {
   width: 100%;
-  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Each section */
-
 .section {
-  margin-bottom: 18px;
+  width: 100%;
+  margin-bottom: 14px;
 }
 
-/* Accordion title */
-
+/* HEADER */
 .accordion-button {
   width: 100%;
   border: none;
   background: #ffffff;
   color: #006747;
 
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
   font-weight: 500;
 
@@ -53,65 +52,61 @@ body {
   text-align: left;
 }
 
-/* Gray background when open */
-
+/* Gray background only while section is open */
 .accordion-button.active {
   background: #eeeeee;
 }
 
-/* Plus / minus */
-
+/* PLUS / MINUS */
 .symbol {
   color: #006747;
   font-size: 28px;
   font-weight: 400;
+  line-height: 1;
   margin-left: 20px;
 }
 
-/* Hidden accordion content */
-
+/* CONTENT AREA */
 .content {
   display: none;
-  padding: 18px 20px 5px 20px;
+  padding: 12px 16px 4px 16px;
 }
-
-/* Show open content */
 
 .content.open {
   display: block;
 }
 
-/* Green bordered box */
-
+/* LIGHT GREEN BOX */
 .content-box {
+  width: 100%;
+
   border: 3px solid #a7d39d;
   border-radius: 4px;
 
-  padding: 4px 20px 4px 34px;
-
   background: #ffffff;
+
+  padding: 5px 22px 5px 34px;
+
+  color: #102b2c;
 
   font-size: 23px;
   line-height: 1.35;
 }
 
-/* Lists */
-
 .content-box ul {
   margin: 0;
-  padding-left: 28px;
+  padding-left: 27px;
 }
 
 .content-box li {
   padding: 2px 0;
 }
 
-/* Mobile */
-
+/* MOBILE */
 @media (max-width: 700px) {
 
   body {
-    padding: 10px;
+    padding: 8px;
   }
 
   .accordion-button {
@@ -119,13 +114,17 @@ body {
     padding: 18px 14px;
   }
 
+  .symbol {
+    font-size: 25px;
+  }
+
   .content {
-    padding: 12px 8px 4px 8px;
+    padding: 10px 5px 4px 5px;
   }
 
   .content-box {
     font-size: 18px;
-    padding: 8px 12px 8px 24px;
+    padding: 8px 12px 8px 22px;
   }
 
 }
@@ -141,8 +140,7 @@ body {
 
   <div class="section">
 
-    <button class="accordion-button"
-            aria-expanded="false">
+    <button class="accordion-button" aria-expanded="false">
 
       <span>Segments</span>
       <span class="symbol">+</span>
@@ -170,8 +168,7 @@ body {
 
   <div class="section">
 
-    <button class="accordion-button"
-            aria-expanded="false">
+    <button class="accordion-button" aria-expanded="false">
 
       <span>Competitors</span>
       <span class="symbol">+</span>
@@ -198,8 +195,7 @@ body {
 
   <div class="section">
 
-    <button class="accordion-button"
-            aria-expanded="false">
+    <button class="accordion-button" aria-expanded="false">
 
       <span>Demand</span>
       <span class="symbol">+</span>
@@ -211,10 +207,7 @@ body {
       <div class="content-box">
 
         <ul>
-          <li>
-            Decorative demand: seasonal low in monsoon peaks (June–August)
-            and during festival season (October–December)
-          </li>
+          <li>Decorative demand: seasonal low in monsoon peaks (June–August) and during festival season (October–December)</li>
         </ul>
 
       </div>
@@ -243,18 +236,14 @@ buttons.forEach(button => {
 
       content.classList.remove("open");
       this.classList.remove("active");
-
       symbol.textContent = "+";
-
       this.setAttribute("aria-expanded", "false");
 
     } else {
 
       content.classList.add("open");
       this.classList.add("active");
-
       symbol.textContent = "−";
-
       this.setAttribute("aria-expanded", "true");
 
     }
