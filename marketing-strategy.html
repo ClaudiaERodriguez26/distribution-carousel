@@ -25,9 +25,11 @@ body {
 
 .activity {
   position: relative;
+
   width: 100%;
   max-width: 1500px;
   min-height: 600px;
+
   margin: 0 auto;
 
   background:
@@ -44,8 +46,10 @@ body {
   color: #ffffff;
 
   padding: 45px 0 35px;
+
   overflow: hidden;
 }
+
 
 /* ========================================
    CENTERED CONTENT
@@ -61,8 +65,9 @@ body {
   margin: 0 auto;
 }
 
+
 /* ========================================
-   INTRO
+   INTRODUCTION
 ======================================== */
 
 .intro h1 {
@@ -79,135 +84,35 @@ body {
   line-height: 1.45;
 }
 
+
 /* ========================================
-   CLICK / CURSOR ICON
+   CLICK CURSOR
 ======================================== */
 
 .click-indicator {
   height: 110px;
+
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
-.cursor-icon {
-  position: relative;
-  width: 58px;
-  height: 58px;
-}
+.click-cursor {
+  width: 52px;
+  height: 52px;
 
-/* OUTLINED CURSOR */
+  object-fit: contain;
 
-.cursor-arrow {
-  position: absolute;
-  left: 18px;
-  top: 18px;
-
-  width: 27px;
-  height: 34px;
-
-  background: transparent;
-
-  border-left: 4px solid #ffffff;
-  border-top: 4px solid #ffffff;
-
-  transform: rotate(-18deg) skew(-8deg);
-
-  transform-origin: top left;
-}
-
-/* Creates the right diagonal side of the pointer */
-
-.cursor-arrow::before {
-  content: "";
-
-  position: absolute;
-
-  width: 27px;
-  height: 4px;
-
-  background: #ffffff;
-  border-radius: 3px;
-
-  left: -1px;
-  top: -2px;
-
-  transform: rotate(43deg);
-  transform-origin: left center;
-}
-
-/* Creates the small lower-right tail */
-
-.cursor-arrow::after {
-  content: "";
-
-  position: absolute;
-
-  width: 15px;
-  height: 4px;
-
-  background: #ffffff;
-  border-radius: 3px;
-
-  left: 15px;
-  top: 18px;
-
-  transform: rotate(58deg);
-  transform-origin: left center;
+  display: block;
 }
 
 
-/* CLICK RAYS */
-
-.ray {
-  position: absolute;
-
-  width: 13px;
-  height: 4px;
-
-  background: #ffffff;
-
-  border-radius: 4px;
-}
-
-/* LEFT */
-
-.ray1 {
-  left: 0px;
-  top: 20px;
-}
-
-/* UPPER LEFT */
-
-.ray2 {
-  left: 6px;
-  top: 7px;
-
-  transform: rotate(45deg);
-}
-
-/* TOP */
-
-.ray3 {
-  left: 22px;
-  top: 2px;
-
-  transform: rotate(90deg);
-}
-
-/* UPPER RIGHT */
-
-.ray4 {
-  left: 36px;
-  top: 8px;
-
-  transform: rotate(135deg);
-}  
 /* ========================================
-   FOUR OPTIONS
+   FOUR STRATEGY OPTIONS
 ======================================== */
 
 .strategy-row {
+
   display: grid;
 
   grid-template-columns:
@@ -222,7 +127,8 @@ body {
 
   padding-bottom: 34px;
 
-  border-bottom: 1px solid rgba(255,255,255,0.90);
+  border-bottom:
+    1px solid rgba(255,255,255,0.90);
 }
 
 .strategy-item {
@@ -230,6 +136,7 @@ body {
 }
 
 .strategy-title {
+
   min-height: 62px;
 
   display: flex;
@@ -240,11 +147,13 @@ body {
   line-height: 1.35;
 }
 
+
 /* ========================================
-   PLUS / CHECK BUTTON
+   PLUS / CHECK BUTTONS
 ======================================== */
 
 .open-button {
+
   width: 64px;
   height: 64px;
 
@@ -263,6 +172,7 @@ body {
   cursor: pointer;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
@@ -272,24 +182,34 @@ body {
 }
 
 .open-button:hover {
+
   transform: scale(1.05);
+
 }
 
 .open-button:focus-visible {
-  outline: 3px solid #76aF55;
+
+  outline: 3px solid #76af55;
+
   outline-offset: 3px;
+
 }
 
 .open-button.visited {
+
   font-size: 29px;
+
   font-weight: 500;
+
 }
 
+
 /* ========================================
-   MODAL OVERLAY
+   POPUP OVERLAY
 ======================================== */
 
 .modal-overlay {
+
   position: absolute;
 
   inset: 0;
@@ -298,24 +218,31 @@ body {
 
   display: none;
 
-  background: rgba(0, 38, 29, 0.76);
+  background:
+    rgba(0, 38, 29, 0.76);
 
   padding: 38px;
 
   align-items: flex-start;
+
   justify-content: center;
 }
 
 .modal-overlay.open {
+
   display: flex;
+
 }
 
+
 /* ========================================
-   MODAL
+   POPUP
 ======================================== */
 
 .modal {
+
   width: 86%;
+
   max-width: 1100px;
 
   margin-top: 10px;
@@ -325,16 +252,20 @@ body {
   color: #155b3a;
 
   padding: 28px 40px 24px;
+
 }
 
+
 /* ========================================
-   MODAL TITLE
+   POPUP TITLE
 ======================================== */
 
 .modal-title {
+
   margin: 0 0 35px;
 
   border: 3px solid #a7d39d;
+
   border-radius: 4px;
 
   padding: 8px 12px;
@@ -342,43 +273,59 @@ body {
   color: #145b39;
 
   font-size: 30px;
+
   font-weight: 700;
+
   line-height: 1.1;
+
 }
 
+
 /* ========================================
-   MODAL CONTENT
+   POPUP CONTENT
 ======================================== */
 
 .modal-content {
+
   padding: 0 20px;
 
   color: #155b3a;
 
   font-size: 20px;
+
   line-height: 1.4;
+
 }
 
 .modal-content ul {
+
   margin: 0;
+
   padding-left: 30px;
+
 }
 
 .modal-content li {
+
   margin: 3px 0;
+
 }
+
 
 /* ========================================
    CLOSE BUTTON
 ======================================== */
 
 .close-wrap {
+
   text-align: center;
 
   margin-top: 34px;
+
 }
 
 .close-button {
+
   border: none;
 
   background: #f47721;
@@ -387,20 +334,31 @@ body {
 
   padding: 12px 30px;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   font-size: 20px;
 
   cursor: pointer;
+
 }
 
 .close-button:hover {
+
   background: #dc6618;
+
 }
 
 .close-button:focus-visible {
+
   outline: 3px solid #006747;
+
   outline-offset: 3px;
+
 }
+
 
 /* ========================================
    TABLET
@@ -409,19 +367,36 @@ body {
 @media (max-width: 900px) {
 
   .activity-inner {
+
     width: 88%;
+
   }
 
   .strategy-row {
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
     row-gap: 45px;
+
   }
 
   .click-indicator {
-    height: 80px;
+
+    height: 85px;
+
+  }
+
+  .click-cursor {
+
+    width: 48px;
+
+    height: 48px;
+
   }
 
 }
+
 
 /* ========================================
    MOBILE
@@ -430,80 +405,126 @@ body {
 @media (max-width: 600px) {
 
   .activity {
+
     padding: 28px 0;
+
   }
 
   .activity-inner {
+
     width: 94%;
+
   }
 
   .intro h1 {
+
     font-size: 21px;
+
   }
 
   .intro p {
+
     font-size: 18px;
+
   }
 
   .click-indicator {
-    height: 65px;
+
+    height: 70px;
+
+  }
+
+  .click-cursor {
+
+    width: 44px;
+
+    height: 44px;
+
   }
 
   .strategy-row {
+
     grid-template-columns: 1fr;
+
     gap: 30px;
+
   }
 
   .strategy-title {
+
     min-height: auto;
+
     font-size: 18px;
+
   }
 
   .open-button {
+
     width: 58px;
+
     height: 58px;
 
     font-size: 32px;
+
   }
 
   .modal-overlay {
+
     padding: 18px;
+
   }
 
   .modal {
+
     width: 100%;
 
     padding: 20px 18px;
+
   }
 
   .modal-title {
+
     font-size: 23px;
 
     margin-bottom: 25px;
+
   }
 
   .modal-content {
+
     font-size: 17px;
 
     padding: 0 5px;
+
   }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="activity" id="activity">
+
+<div
+  class="activity"
+  id="activity">
+
 
   <div class="activity-inner">
 
-    <!-- INTRO -->
+
+    <!-- =====================================
+         INTRODUCTION
+    ====================================== -->
 
     <div class="intro">
 
-      <h1>Marketing Strategy</h1>
+      <h1>
+        Marketing Strategy
+      </h1>
 
       <p>
         Based on this analysis, Asian Paints developed its marketing strategy as follows:
@@ -512,25 +533,27 @@ body {
     </div>
 
 
-    <!-- CLICK INDICATOR -->
 
-    <div class="click-indicator" aria-hidden="true">
+    <!-- =====================================
+         CLICK CURSOR
+    ====================================== -->
 
-      <div class="cursor-icon">
+    <div
+      class="click-indicator"
+      aria-hidden="true">
 
-        <span class="ray ray1"></span>
-        <span class="ray ray2"></span>
-        <span class="ray ray3"></span>
-        <span class="ray ray4"></span>
-
-        <span class="cursor-arrow"></span>
-
-      </div>
+      <img
+        src="click-cursor.png"
+        class="click-cursor"
+        alt="">
 
     </div>
 
 
-    <!-- FOUR ITEMS -->
+
+    <!-- =====================================
+         FOUR OPTIONS
+    ====================================== -->
 
     <div class="strategy-row">
 
@@ -540,7 +563,9 @@ body {
       <div class="strategy-item">
 
         <div class="strategy-title">
+
           Segments
+
         </div>
 
         <button
@@ -548,10 +573,13 @@ body {
           type="button"
           data-modal="segments"
           aria-label="Open Segments">
+
           +
+
         </button>
 
       </div>
+
 
 
       <!-- PRODUCT STRATEGY -->
@@ -559,7 +587,10 @@ body {
       <div class="strategy-item">
 
         <div class="strategy-title">
-          Consequence: product<br>strategy
+
+          Consequence: product<br>
+          strategy
+
         </div>
 
         <button
@@ -567,10 +598,13 @@ body {
           type="button"
           data-modal="product"
           aria-label="Open consequence product strategy">
+
           +
+
         </button>
 
       </div>
+
 
 
       <!-- DISTRIBUTION STRATEGY -->
@@ -578,7 +612,10 @@ body {
       <div class="strategy-item">
 
         <div class="strategy-title">
-          Consequence:<br>distribution strategy
+
+          Consequence:<br>
+          distribution strategy
+
         </div>
 
         <button
@@ -586,10 +623,13 @@ body {
           type="button"
           data-modal="distribution"
           aria-label="Open consequence distribution strategy">
+
           +
+
         </button>
 
       </div>
+
 
 
       <!-- CHANNEL DESIGN -->
@@ -597,7 +637,9 @@ body {
       <div class="strategy-item">
 
         <div class="strategy-title">
+
           Solution: channel design
+
         </div>
 
         <button
@@ -605,18 +647,23 @@ body {
           type="button"
           data-modal="channel"
           aria-label="Open solution channel design">
+
           +
+
         </button>
 
       </div>
 
+
     </div>
+
 
   </div>
 
 
+
   <!-- =====================================
-       SEGMENTS
+       SEGMENTS POPUP
   ====================================== -->
 
   <div
@@ -627,36 +674,52 @@ body {
 
     <div class="modal">
 
+
       <div class="modal-title">
+
         Segments
+
       </div>
+
 
       <div class="modal-content">
 
         <ul>
-          <li>Focus on individuals</li>
-          <li>Focus on semi-urban and rural areas</li>
+
+          <li>
+            Focus on individuals
+          </li>
+
+          <li>
+            Focus on semi-urban and rural areas
+          </li>
+
         </ul>
 
       </div>
+
 
       <div class="close-wrap">
 
         <button
           class="close-button"
           type="button">
+
           Close
+
         </button>
 
       </div>
+
 
     </div>
 
   </div>
 
 
+
   <!-- =====================================
-       PRODUCT STRATEGY
+       PRODUCT STRATEGY POPUP
   ====================================== -->
 
   <div
@@ -667,16 +730,21 @@ body {
 
     <div class="modal">
 
+
       <div class="modal-title">
+
         Consequence: Product Strategy
+
       </div>
+
 
       <div class="modal-content">
 
         <ul>
 
           <li>
-            Individuals want many colors (large product variety)
+            Individuals want many colors
+            (large product variety)
           </li>
 
           <li>
@@ -687,23 +755,28 @@ body {
 
       </div>
 
+
       <div class="close-wrap">
 
         <button
           class="close-button"
           type="button">
+
           Close
+
         </button>
 
       </div>
+
 
     </div>
 
   </div>
 
 
+
   <!-- =====================================
-       DISTRIBUTION STRATEGY
+       DISTRIBUTION STRATEGY POPUP
   ====================================== -->
 
   <div
@@ -714,9 +787,13 @@ body {
 
     <div class="modal">
 
+
       <div class="modal-title">
+
         Consequence: Distribution Strategy
+
       </div>
+
 
       <div class="modal-content">
 
@@ -741,7 +818,8 @@ body {
           </li>
 
           <li>
-            Requires dealers who can deal in small amounts (not in bulk)
+            Requires dealers who can deal in small amounts
+            (not in bulk)
           </li>
 
           <li>
@@ -758,23 +836,28 @@ body {
 
       </div>
 
+
       <div class="close-wrap">
 
         <button
           class="close-button"
           type="button">
+
           Close
+
         </button>
 
       </div>
+
 
     </div>
 
   </div>
 
 
+
   <!-- =====================================
-       CHANNEL DESIGN
+       CHANNEL DESIGN POPUP
   ====================================== -->
 
   <div
@@ -785,9 +868,13 @@ body {
 
     <div class="modal">
 
+
       <div class="modal-title">
+
         Solution: Channel Design
+
       </div>
+
 
       <div class="modal-content">
 
@@ -802,7 +889,8 @@ body {
           </li>
 
           <li>
-            Inventory management (28 days; industry average is 45 days)
+            Inventory management
+            (28 days; industry average is 45 days)
           </li>
 
           <li>
@@ -819,28 +907,35 @@ body {
           </li>
 
           <li>
-            Save money in distribution to spend on promotion (10% of sales)
+            Save money in distribution to spend on promotion
+            (10% of sales)
           </li>
 
         </ul>
 
       </div>
 
+
       <div class="close-wrap">
 
         <button
           class="close-button"
           type="button">
+
           Close
+
         </button>
 
       </div>
+
 
     </div>
 
   </div>
 
+
 </div>
+
 
 
 <script>
@@ -848,81 +943,112 @@ body {
 const activity =
   document.getElementById("activity");
 
+
 const openButtons =
   activity.querySelectorAll(".open-button");
 
+
 const closeButtons =
   activity.querySelectorAll(".close-button");
+
 
 const modalOverlays =
   activity.querySelectorAll(".modal-overlay");
 
 
+
+/* OPEN POPUPS */
+
 openButtons.forEach(button => {
 
-  button.addEventListener("click", function () {
+  button.addEventListener(
+    "click",
+    function () {
 
-    const modalId =
-      this.getAttribute("data-modal");
+      const modalId =
+        this.getAttribute("data-modal");
 
-    const modal =
-      activity.querySelector("#" + modalId);
+      const modal =
+        activity.querySelector("#" + modalId);
 
-    modal.classList.add("open");
+      modal.classList.add("open");
 
-    this.textContent = "✓";
 
-    this.classList.add("visited");
+      /* Change plus to checkmark */
 
-  });
+      this.textContent = "✓";
+
+      this.classList.add("visited");
+
+    }
+  );
 
 });
 
+
+
+/* CLOSE BUTTONS */
 
 closeButtons.forEach(button => {
 
-  button.addEventListener("click", function () {
+  button.addEventListener(
+    "click",
+    function () {
 
-    const modal =
-      this.closest(".modal-overlay");
-
-    modal.classList.remove("open");
-
-  });
-
-});
-
-
-modalOverlays.forEach(overlay => {
-
-  overlay.addEventListener("click", function (event) {
-
-    if (event.target === overlay) {
-
-      overlay.classList.remove("open");
-
-    }
-
-  });
-
-});
-
-
-document.addEventListener("keydown", function (event) {
-
-  if (event.key === "Escape") {
-
-    modalOverlays.forEach(modal => {
+      const modal =
+        this.closest(".modal-overlay");
 
       modal.classList.remove("open");
 
-    });
-
-  }
+    }
+  );
 
 });
 
+
+
+/* CLICK OUTSIDE POPUP TO CLOSE */
+
+modalOverlays.forEach(overlay => {
+
+  overlay.addEventListener(
+    "click",
+    function (event) {
+
+      if (event.target === overlay) {
+
+        overlay.classList.remove("open");
+
+      }
+
+    }
+  );
+
+});
+
+
+
+/* ESCAPE KEY CLOSES POPUP */
+
+document.addEventListener(
+  "keydown",
+  function (event) {
+
+    if (event.key === "Escape") {
+
+      modalOverlays.forEach(modal => {
+
+        modal.classList.remove("open");
+
+      });
+
+    }
+
+  }
+);
+
 </script>
+
 
 </body>
 
