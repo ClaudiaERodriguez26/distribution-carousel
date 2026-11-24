@@ -1,1 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Marketing Strategy</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* MAIN ACTIVITY */
+
+.activity {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  min-height: 600px;
+  margin: 0 auto;
+
+  background: #4f8068;
+  color: #ffffff;
+
+  padding: 50px 55px 35px;
+  overflow: hidden;
+}
+
+/* Decorative background shapes */
+
+.activity::before {
+  content: "";
+  position: absolute;
+  width: 560px;
+  height: 560px;
+
+  left: 260px;
+  bottom: -330px;
+
+  border-radius: 50%;
+  border: 55px solid rgba(0, 83, 58, 0.16);
+}
+
+.activity::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+
+  right: 80px;
+  bottom: -230px;
+
+  border-radius: 50%;
+  border: 40px solid rgba(0, 83, 58, 0.12);
+}
+
+/* INTRO */
+
+.intro {
+  position: relative;
+  z-index: 2;
+}
+
+.intro h1 {
+  margin: 0 0 22px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.intro p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.45;
+}
+
+/* FOUR ITEMS */
+
+.strategy-row {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+
+  gap: 28px;
+
+  margin-top: 135px;
+  padding-bottom: 45px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.8);
+}
+
+.strategy-item {
+  text-align: center;
+}
+
+.strategy-title {
+  min-height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+/* ROUND BUTTON */
+
+.open-button {
+  width: 66px;
+  height: 66px;
+
+  margin-top: 15px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #006747;
+
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.15s ease;
+}
+
+.open-button:hover {
+  transform: scale(1.05);
+}
+
+.open-button:focus-visible {
+  outline: 4px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.open-button.visited {
+  font-size: 31px;
+  font-weight: 500;
+}
+
+/* MODAL OVERLAY */
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 10;
+
+  display: none;
+
+  background: rgba(0, 38, 29, 0.72);
+
+  padding: 40px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+/* MODAL */
+
+.modal {
+  width: 90%;
+  max-width: 1170px;
+
+  margin-top: 10px;
+
+  background: #ffffff;
+  color: #155b3a;
+
+  padding: 28px 40px 24px;
+}
+
+/* MODAL TITLE */
+
+.modal-title {
+  position: relative;
+
+  margin: 0 0 35px;
+
+  border: 3px solid #a7d39d;
+  border-radius: 4px;
+
+  padding: 8px 12px;
+
+  color: #145b39;
+
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* MODAL CONTENT */
+
+.modal-content {
+  padding: 0 20px;
+
+  color: #155b3a;
+
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.modal-content ul {
+  margin: 0;
+  padding-left: 30px;
+}
+
+.modal-content li {
+  margin: 2px 0;
+}
+
+/* CLOSE BUTTON */
+
+.close-wrap {
+  text-align: center;
+  margin-top: 36px;
+}
+
+.close-button {
+  border: none;
+
+  background: #f47721;
+  color: #ffffff;
+
+  padding: 12px 30px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #dc6618;
+}
+
+.close-button:focus-visible {
+  outline: 4px solid #006747;
+  outline-offset: 3px;
+}
+
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  .activity {
+    padding: 35px 30px;
+  }
+
+  .strategy-row {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 70px;
+    row-gap: 50px;
+  }
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .activity {
+    padding: 28px 18px;
+  }
+
+  .intro h1 {
+    font-size: 21px;
+  }
+
+  .intro p {
+    font-size: 18px;
+  }
+
+  .strategy-row {
+    grid-template-columns: 1fr;
+    margin-top: 50px;
+    gap: 35px;
+  }
+
+  .strategy-title {
+    min-height: auto;
+    font-size: 18px;
+  }
+
+  .open-button {
+    width: 58px;
+    height: 58px;
+    font-size: 32px;
+  }
+
+  .modal-overlay {
+    padding: 18px;
+  }
+
+  .modal {
+    width: 100%;
+    padding: 20px 18px;
+  }
+
+  .modal-title {
+    font-size: 23px;
+    margin-bottom: 25px;
+  }
+
+  .modal-content {
+    font-size: 17px;
+    padding: 0 5px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="activity" id="activity">
+
+  <!-- INTRODUCTION -->
+
+  <div class="intro">
+
+    <h1>Marketing Strategy</h1>
+
+    <p>
+      Based on this analysis, Asian Paints developed its marketing strategy as follows:
+    </p>
+
+  </div>
+
+
+  <!-- FOUR STRATEGY ITEMS -->
+
+  <div class="strategy-row">
+
+
+    <!-- SEGMENTS -->
+
+    <div class="strategy-item">
+
+      <div class="strategy-title">
+        Segments
+      </div>
+
+      <button
+        class="open-button"
+        type="button"
+        data-modal="segments"
+        aria-label="Open Segments">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- PRODUCT STRATEGY -->
+
+    <div class="strategy-item">
+
+      <div class="strategy-title">
+        Consequence: product<br>strategy
+      </div>
+
+      <button
+        class="open-button"
+        type="button"
+        data-modal="product"
+        aria-label="Open consequence product strategy">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- DISTRIBUTION STRATEGY -->
+
+    <div class="strategy-item">
+
+      <div class="strategy-title">
+        Consequence:<br>distribution strategy
+      </div>
+
+      <button
+        class="open-button"
+        type="button"
+        data-modal="distribution"
+        aria-label="Open consequence distribution strategy">
+        +
+      </button>
+
+    </div>
+
+
+    <!-- CHANNEL DESIGN -->
+
+    <div class="strategy-item">
+
+      <div class="strategy-title">
+        Solution: channel design
+      </div>
+
+      <button
+        class="open-button"
+        type="button"
+        data-modal="channel"
+        aria-label="Open solution channel design">
+        +
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- SEGMENTS MODAL -->
+
+  <div class="modal-overlay" id="segments" role="dialog" aria-modal="true">
+
+    <div class="modal">
+
+      <div class="modal-title">
+        Segments
+      </div>
+
+      <div class="modal-content">
+
+        <ul>
+          <li>Focus on individuals</li>
+          <li>Focus on semi-urban and rural areas</li>
+        </ul>
+
+      </div>
+
+      <div class="close-wrap">
+
+        <button class="close-button" type="button">
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- PRODUCT STRATEGY MODAL -->
+
+  <div class="modal-overlay" id="product" role="dialog" aria-modal="true">
+
+    <div class="modal">
+
+      <div class="modal-title">
+        Consequence: Product Strategy
+      </div>
+
+      <div class="modal-content">
+
+        <ul>
+          <li>Individuals want many colors (large product variety)</li>
+          <li>They want different package sizes</li>
+        </ul>
+
+      </div>
+
+      <div class="close-wrap">
+
+        <button class="close-button" type="button">
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DISTRIBUTION STRATEGY MODAL -->
+
+  <div class="modal-overlay" id="distribution" role="dialog" aria-modal="true">
+
+    <div class="modal">
+
+      <div class="modal-title">
+        Consequence: Distribution Strategy
+      </div>
+
+      <div class="modal-content">
+
+        <ul>
+
+          <li>
+            Disperses segment needs across a large distribution network
+          </li>
+
+          <li>
+            Different colors and sizes means a large product range
+          </li>
+
+          <li>
+            Low-income customers require low prices; these consumers buy only
+            a few cans of paint on each shopping occasion
+          </li>
+
+          <li>
+            Seasonal demand means excess inventory must be carried in
+            distribution channels during non-peak months to even production
+          </li>
+
+          <li>
+            Requires dealers who can deal in small amounts (not in bulk)
+          </li>
+
+          <li>
+            Small dealers mean intermediate storage in order to pick up
+            frequent shipments
+          </li>
+
+          <li>
+            All indicates a very costly distribution system—but recall low
+            consumer income necessitates low prices
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="close-wrap">
+
+        <button class="close-button" type="button">
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CHANNEL DESIGN MODAL -->
+
+  <div class="modal-overlay" id="channel" role="dialog" aria-modal="true">
+
+    <div class="modal">
+
+      <div class="modal-title">
+        Solution: Channel Design
+      </div>
+
+      <div class="modal-content">
+
+        <ul>
+
+          <li>
+            Product assortment over 2000 Stock Keeping Units (SKUs)
+          </li>
+
+          <li>
+            Network of factories (4), depots (3), and dealers (15,000)
+          </li>
+
+          <li>
+            Inventory management (28 days; industry average is 45 days)
+          </li>
+
+          <li>
+            Credit control – dealer incentives 5% cash discount;
+            3.5% special discount
+          </li>
+
+          <li>
+            Use satellite communications and Intranet
+          </li>
+
+          <li>
+            Track online sales data to capture fast-moving items
+          </li>
+
+          <li>
+            Save money in distribution to spend on promotion (10% of sales)
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="close-wrap">
+
+        <button class="close-button" type="button">
+          Close
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+const activity = document.getElementById("activity");
+
+const openButtons =
+  activity.querySelectorAll(".open-button");
+
+const closeButtons =
+  activity.querySelectorAll(".close-button");
+
+const modalOverlays =
+  activity.querySelectorAll(".modal-overlay");
+
+
+openButtons.forEach(button => {
+
+  button.addEventListener("click", function () {
+
+    const modalId =
+      this.getAttribute("data-modal");
+
+    const modal =
+      activity.querySelector("#" + modalId);
+
+    modal.classList.add("open");
+
+    /* Change + to checkmark after section is viewed */
+
+    this.textContent = "✓";
+
+    this.classList.add("visited");
+
+  });
+
+});
+
+
+closeButtons.forEach(button => {
+
+  button.addEventListener("click", function () {
+
+    const modal =
+      this.closest(".modal-overlay");
+
+    modal.classList.remove("open");
+
+  });
+
+});
+
+
+modalOverlays.forEach(overlay => {
+
+  overlay.addEventListener("click", function (event) {
+
+    if (event.target === overlay) {
+
+      overlay.classList.remove("open");
+
+    }
+
+  });
+
+});
+
+
+document.addEventListener("keydown", function (event) {
+
+  if (event.key === "Escape") {
+
+    modalOverlays.forEach(modal => {
+      modal.classList.remove("open");
+    });
+
+  }
+
+});
+
+</script>
+
+</body>
+
+</html>
