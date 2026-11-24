@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Market Overview</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #102b2c;
+}
+
+.accordion {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Each section */
+
+.section {
+  margin-bottom: 18px;
+}
+
+/* Accordion title */
+
+.accordion-button {
+  width: 100%;
+  border: none;
+  background: #ffffff;
+  color: #006747;
+
+  font-size: 25px;
+  font-weight: 500;
+
+  padding: 22px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+  text-align: left;
+}
+
+/* Gray background when open */
+
+.accordion-button.active {
+  background: #eeeeee;
+}
+
+/* Plus / minus */
+
+.symbol {
+  color: #006747;
+  font-size: 28px;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+/* Hidden accordion content */
+
+.content {
+  display: none;
+  padding: 18px 20px 5px 20px;
+}
+
+/* Show open content */
+
+.content.open {
+  display: block;
+}
+
+/* Green bordered box */
+
+.content-box {
+  border: 3px solid #a7d39d;
+  border-radius: 4px;
+
+  padding: 4px 20px 4px 34px;
+
+  background: #ffffff;
+
+  font-size: 23px;
+  line-height: 1.35;
+}
+
+/* Lists */
+
+.content-box ul {
+  margin: 0;
+  padding-left: 28px;
+}
+
+.content-box li {
+  padding: 2px 0;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .accordion-button {
+    font-size: 20px;
+    padding: 18px 14px;
+  }
+
+  .content {
+    padding: 12px 8px 4px 8px;
+  }
+
+  .content-box {
+    font-size: 18px;
+    padding: 8px 12px 8px 24px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="accordion">
+
+  <!-- SEGMENTS -->
+
+  <div class="section">
+
+    <button class="accordion-button"
+            aria-expanded="false">
+
+      <span>Segments</span>
+      <span class="symbol">+</span>
+
+    </button>
+
+    <div class="content">
+
+      <div class="content-box">
+
+        <ul>
+          <li>Industrial – 30%</li>
+          <li>Decorative/architectural – 70%</li>
+          <li>Segments are dispersed across urban, semi-urban, and rural areas</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COMPETITORS -->
+
+  <div class="section">
+
+    <button class="accordion-button"
+            aria-expanded="false">
+
+      <span>Competitors</span>
+      <span class="symbol">+</span>
+
+    </button>
+
+    <div class="content">
+
+      <div class="content-box">
+
+        <ul>
+          <li>Traditionally focused on urban markets</li>
+          <li>Controlled distribution channel through exclusive dealers</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DEMAND -->
+
+  <div class="section">
+
+    <button class="accordion-button"
+            aria-expanded="false">
+
+      <span>Demand</span>
+      <span class="symbol">+</span>
+
+    </button>
+
+    <div class="content">
+
+      <div class="content-box">
+
+        <ul>
+          <li>
+            Decorative demand: seasonal low in monsoon peaks (June–August)
+            and during festival season (October–December)
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const buttons = document.querySelectorAll(".accordion-button");
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", function () {
+
+    const content = this.nextElementSibling;
+    const symbol = this.querySelector(".symbol");
+
+    const isOpen = content.classList.contains("open");
+
+    if (isOpen) {
+
+      content.classList.remove("open");
+      this.classList.remove("active");
+
+      symbol.textContent = "+";
+
+      this.setAttribute("aria-expanded", "false");
+
+    } else {
+
+      content.classList.add("open");
+      this.classList.add("active");
+
+      symbol.textContent = "−";
+
+      this.setAttribute("aria-expanded", "true");
+
+    }
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
